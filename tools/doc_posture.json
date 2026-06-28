@@ -1,0 +1,35 @@
+{
+  "doctrine": "A page must carry what the reader needs. Do not score the page; number what it must prove it carries — so a how-to, a learn page, or a 'build your own AInternet' guide cannot silently miss a prerequisite, a guard, or strand the reader.",
+  "version": "0.1.0",
+  "family": ["route-posture (routes)", "repo-posture (deploys)", "doc-posture (docs)"],
+
+  "dimensions": {
+    "no_banned_doctrine": "Carries no legacy scalar trust-score language (except explicit deprecation/negation). The thing that would have caught the 2026-06-28 residue.",
+    "identity_first": "Establishes WHO acts (identity / JIS / .aint) before, or alongside, the mechanics — never IP-first.",
+    "prerequisites": "States what the reader needs up front: install line, prior page, or what must be running.",
+    "runnable": "Has at least one concrete, copy-pasteable code or CLI block.",
+    "guard": "Names the relevant default where an action carries risk: fail-closed, dark-by-default, consent (SNAFT), isolation (Airlock), or posture.",
+    "next_step": "Links the reader onward (a Related/Next section or outbound page links). Never a dead end.",
+    "machine_surface": "Has or links a machine-actionable counterpart (resources.json / api.json / a curl path) — because an AI curls, it does not read.",
+    "conformance_pointer": "Points at conformance vectors. Docs explain; vectors decide."
+  },
+
+  "banned_doctrine": {
+    "patterns": ["trust[ _-]?score", "trust rating", "reputation score", "min_trust", "verified because score"],
+    "allow_if_line_contains": ["not a", "not store", "not a stored", "deprecated", "legacy", "route posture", "instead of", "no stored", "avoid", "static trust", "no static", "should not", "no scalar", "not rate", "without a", "rather than"],
+    "replacement_hint": "Use route posture / proven route / required_posture / posture transition. See learn/route-posture.md."
+  },
+
+  "types": {
+    "learn":         {"match": "learn/",      "required": ["no_banned_doctrine", "identity_first", "next_step"],                              "advisory": ["machine_surface"]},
+    "howto":         {"match": "guides/",     "required": ["no_banned_doctrine", "prerequisites", "runnable", "next_step"],                  "advisory": ["identity_first", "guard"]},
+    "quickstart":    {"match": "quickstart/", "required": ["no_banned_doctrine", "prerequisites", "runnable", "next_step"],                  "advisory": ["identity_first", "machine_surface"]},
+    "build_your_own":{"match": "network/",    "required": ["no_banned_doctrine", "identity_first", "prerequisites", "runnable", "next_step"], "advisory": ["guard", "machine_surface"]},
+    "protocol":      {"match": "protocols/",  "required": ["no_banned_doctrine", "guard", "next_step"],                                      "advisory": ["conformance_pointer"]},
+    "reference":     {"match": "reference/",  "required": ["no_banned_doctrine", "runnable"],                                               "advisory": ["next_step"]},
+    "operators":     {"match": "operators/",  "required": ["no_banned_doctrine", "guard", "next_step"],                                      "advisory": ["machine_surface"]},
+    "builders":      {"match": "builders/",   "required": ["no_banned_doctrine", "runnable", "next_step"],                                   "advisory": ["identity_first"]},
+    "enterprise":    {"match": "enterprise/", "required": ["no_banned_doctrine", "next_step"],                                              "advisory": ["guard"]},
+    "default":       {"match": "",            "required": ["no_banned_doctrine"],                                                           "advisory": ["next_step"]}
+  }
+}

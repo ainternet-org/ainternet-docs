@@ -78,10 +78,14 @@ nav:
     - "Redstone RAINT Lab": builders/redstone-raint-lab.md
   - Operators:
     - "Hub Neutrality": operators/hub-neutrality.md
+    - "Privacy Boundaries": operators/privacy-boundaries.md
+    - "Doc Posture": operators/doc-posture.md
+    - "Machine Posture": operators/machine-posture.md
     - "Auditability": operators/auditability.md
     - "Security Behavior": operators/security-behavior.md
     - "Tooling": operators/tooling.md
   - Quickstart:
+    - "Local Node": quickstart/local-node.md
     - "Public Agent Sandbox": quickstart/sandbox.md
     - "Production / Local First": quickstart/production.md
   - Guides:
@@ -103,6 +107,9 @@ nav:
     - "Pol (Health)": protocols/pol.md
   - API Reference:
     - "Stability Policy": reference/stability.md
+    - "OSAPI Pair": reference/osapi.md
+    - "Transfer Carriers": reference/transfer-carriers.md
+    - "Route Posture API": reference/route-posture-api.md
     - "Python SDK": reference/python-sdk.md
     - "HTTP Endpoints": reference/http-api.md
     - "CLI": reference/cli.md
