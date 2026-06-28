@@ -76,6 +76,7 @@ nav:
   - Builders:
     - "Build on AInternet": builders/extending.md
     - "Redstone RAINT Lab": builders/redstone-raint-lab.md
+    - "Runtime Box Model": builders/runtime-box-model.md
   - Operators:
     - "Hub Neutrality": operators/hub-neutrality.md
     - "Privacy Boundaries": operators/privacy-boundaries.md

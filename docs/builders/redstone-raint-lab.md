@@ -10,6 +10,8 @@ JIS identity -> TIBET receipt -> MUX decision -> surface route -> audit -> TTL d
 
 Use this page when you want to run the live path, inspect what is dark, and understand how a local or self-hosted AInternet node behaves under pressure.
 
+For the reusable pattern behind this lab, see [Runtime Box Model](runtime-box-model.md). The RAINT lab is the KVM/microVM reference implementation of that model.
+
 ## What This Proves
 
 | Property | Expected behavior |
