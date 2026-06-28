@@ -19,6 +19,48 @@ auditable always
 
 Public AInternet gives you outside reachability. It does not replace your local trust model.
 
+## The Shape
+
+The online path is a bridge between networks, not a landlord above them:
+
+```text
+your local AInternet
+  -> outbound lane
+  -> edge / hub / partner network
+  -> outside actor
+  -> local policy still decides
+  -> TIBET records the chain
+```
+
+The edge may route. It must not become the authority for your identity, your consent, your payload or your audit trail.
+
+## Connect Doctrine
+
+When you connect your own AInternet, keep these layers separate:
+
+```text
+L0 silence          strangers get 0x0000
+identity           your .aint / local actor key is the root
+resolve            proven? related? scoped?
+handshake.aint     the one open test fixture
+edge lane          outbound-only, short-lived, signed
+carrier            sealed .tza/TIBET-zip moves across the lane
+local open         your side decrypts, checks policy and records evidence
+```
+
+This is the `connect.html` doctrine in operator form:
+
+```text
+inbound ports: zero
+identity proof: fresh
+edge visibility: envelope only
+payload authority: local key and manifest
+route authority: MUX + policy + consent
+audit authority: local TIBET receipts
+```
+
+The outside network can deliver a sealed object. It cannot make that object safe, allowed or true by itself.
+
 ## Before Going Online
 
 Your local network should already answer:
@@ -70,6 +112,39 @@ proven and related caller -> scoped status or route
 
 Use `handshake.aint` as the open test fixture for reachability. Do not probe real actors to see if the network answers.
 
+`handshake.aint` proves the path, not access to a peer:
+
+```text
+resolve handshake.aint        -> 0x4000  path fixture responds
+resolve unknown-real-name     -> 0x0000  silence
+resolve known-granted-actor   -> scoped status or route
+```
+
+Every other name has to be earned by proof and relation.
+
+## Online Route Posture
+
+For a connected network, route posture is the operator's location marker:
+
+| You see | Meaning | Next step |
+|---|---|---|
+| `0x0000` | no entitlement, no disclosure, or not proven | prove identity or stop |
+| `0x4000` on `handshake.aint` | the path fixture works | test your own node binding |
+| proven identity, no relation | actor is real but not granted | negotiate or import relation |
+| relation, no consent | route exists but action is not scoped | use SNAFT / operator approval |
+| scoped route | named surface may carry this action | send sealed carrier and receipt |
+| tombstone / successor | actor moved or retired | follow successor or stop retrying |
+
+This is the user-facing promise:
+
+```text
+you are here
+this is what is proven
+this is the next safe move
+```
+
+If a step cannot say those three things, it is not ready to be a federation surface.
+
 ## Online Path
 
 The normal path is:
@@ -100,10 +175,12 @@ Example selected public config:
 ```yaml
 agent: mybot
 domain: mybot.aint
-hub: https://brein.jaspervandemeent.nl
+hub: https://your-hub.example
 mode: production
 identity: .ainternet/agent.key
 ```
+
+The hub URL is configuration, not identity. A package should not silently phone a default third-party hub.
 
 ## Known Actors Across Boundaries
 
@@ -132,6 +209,37 @@ A local AInternet can behave like a Home Assistant-style control plane:
 - public federation is an optional bridge
 
 This keeps complex integrations understandable. The network remains actor-first, policy-first and evidence-first.
+
+## Private-To-Private Connection
+
+Public names are not required for federation. Two private AInternet networks can connect by exchanging known actor records and opening a scoped lane:
+
+```text
+network A exports partner record
+network B imports partner record
+both sides verify JIS proof
+SNAFT records scope and duration
+MUX opens only the named surfaces
+sealed carriers move
+each side writes its own TIBET receipts
+```
+
+This is useful for:
+
+- household-to-family support;
+- a lab and a staging network;
+- a company and a contractor;
+- two agents collaborating for a bounded task;
+- temporary networks that will later be tombstoned.
+
+When the relation ends:
+
+```text
+close lane
+tombstone or expire relation
+deny old route
+keep the evidence
+```
 
 ## Machine-Readable Surfaces
 

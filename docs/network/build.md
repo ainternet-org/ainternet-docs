@@ -2,6 +2,96 @@
 
 This guide is for building a decentralized zero-trust AInternet-style network. It starts local. Public `.aint` federation is optional and comes later.
 
+You are not joining one central AInternet. You are making your own AInternet: a local trust network for your actors, devices, services and AI runtimes. It may stay private forever. It may later connect to another AInternet. It may also claim public `.aint` names. Those are later choices, not the foundation.
+
+## The Path
+
+Read the docs in this order if you are building from zero:
+
+```text
+1. Build a local network
+   actor identities -> local registry -> local policy -> receipts
+
+2. Prove routes inside it
+   resolve -> challenge -> relation -> MUX/I-Poll -> TIBET receipt
+
+3. Add evidence and isolation
+   audit cockpit -> Wayback/SBOM/CBOM/AI-SBOM -> Airlock
+
+4. Connect to another network
+   handshake.aint -> outbound lane -> sealed .tza carrier -> local policy still wins
+
+5. Go public only when useful
+   public .aint claim -> federation -> outside discovery
+```
+
+The key separation:
+
+```text
+local AInternet       = the network you run
+private federation    = networks you deliberately connect
+public AInternet      = public names and discovery
+```
+
+Do not skip the first one. Federation without a local model only gives you reachability, not safety.
+
+## Route Posture As "You Are Here"
+
+Route posture is the map marker for the build. It tells an operator what has been proven now, and what the next step is allowed to promise.
+
+```text
+0x0000 / #00000
+  you are here: no route or no entitlement
+  next promise: prove identity before anything speaks
+
+identity proven
+  you are here: the actor can answer a fresh challenge
+  next promise: check whether a relation exists
+
+known relation
+  you are here: both sides recognize the relationship
+  next promise: check policy and consent for this action
+
+route opened
+  you are here: MUX/I-Poll can carry this named surface
+  next promise: write a TIBET receipt for the action
+
+receipt written
+  you are here: the action is reconstructable
+  next promise: add material evidence and isolation where risk demands it
+
+federated lane
+  you are here: another network can reach a scoped surface
+  next promise: keep local policy, consent and audit in control
+```
+
+So a route posture is not decorative status. It is an operator breadcrumb:
+
+```text
+where am I?
+what can I prove?
+what may safely happen next?
+```
+
+## The Local Tree
+
+A small AInternet can be one person, one AI and one evidence store. A larger one can be a household, a company, a lab or a temporary project mesh.
+
+```text
+YOUR AINTERNET
+│
+├─ actors ............ people, agents, devices, services, runtimes
+├─ identity .......... JIS keys and fresh proof
+├─ registry .......... known actors and their current records
+├─ policy ............ what each actor may do
+├─ routes ............ MUX / I-Poll paths that open only after proof
+├─ carriers .......... sealed .tza/TIBET-zip objects for important payloads
+├─ evidence .......... TIBET receipts, audit, Wayback, SBOM, CBOM, AI-SBOM
+└─ isolation ......... Airlock for unknown, risky or generated work
+```
+
+Internet access is not required for this tree. A public hub is not required. A local node, a private LAN, a lab machine or a family network can carry the model.
+
 ## Target Shape
 
 A minimal useful network has:
@@ -218,7 +308,15 @@ The command installs the tools. The network is the actor registry, policies, rec
 
 ## 10. Federate When Useful
 
-Connect to public AInternet when you need:
+Connect to another AInternet when you need:
+
+- a partner network;
+- a family or project mesh across locations;
+- a private hub between organizations;
+- outside discovery;
+- public `.aint` names.
+
+Connect to public AInternet specifically when you need:
 
 - public `.aint` names
 - outside discovery
@@ -235,6 +333,14 @@ local policy checks relation
 SNAFT scope negotiated if needed
 route opens or fails closed
 TIBET records the chain
+```
+
+For the online lane doctrine, see [Go Online](federation.md). The important point is that the outside path is subordinate to the local network:
+
+```text
+outside reachability does not create authority
+public name resolution does not create consent
+edge routing does not replace local receipts
 ```
 
 ## 11. Retire or Succeed Actors Explicitly
