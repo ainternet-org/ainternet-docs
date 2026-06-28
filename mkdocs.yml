@@ -109,6 +109,7 @@ nav:
     - "Stability Policy": reference/stability.md
     - "OSAPI Pair": reference/osapi.md
     - "Transfer Carriers": reference/transfer-carriers.md
+    - "Semantic Surface Manifest": reference/semantic-surface-manifest.md
     - "Route Posture API": reference/route-posture-api.md
     - "Python SDK": reference/python-sdk.md
     - "HTTP Endpoints": reference/http-api.md

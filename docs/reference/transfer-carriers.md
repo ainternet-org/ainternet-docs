@@ -67,9 +67,15 @@ Plaintext may be fine for local demos and public test messages. It is not the de
 
 Do not trust a filename extension. A carrier should be identified by structure and magic bytes. This lets MUX, continuityd and audit tooling recognize the object even when it is copied, renamed or moved across transports.
 
+The filename still has value as a human surface. It can say who the object is
+for, which lane it was dropped on, or which quarter a log belongs to. That
+surface is an index, not authority. The sealed manifest remains the truth. See
+[Semantic Surface Manifest](semantic-surface-manifest.md).
+
 ## Related
 
 - [Privacy Boundaries](../operators/privacy-boundaries.md)
+- [Semantic Surface Manifest](semantic-surface-manifest.md)
 - [The Running Substrate](../learn/the-running-substrate.md)
 - [TIBET](../protocols/tibet.md)
 - [SNAFT](../protocols/snaft.md)
