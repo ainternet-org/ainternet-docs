@@ -36,6 +36,10 @@ supports protected DMA hot-transfer lane
 
 Unknowns should stay unknown. A machine must not claim a lane it did not prove.
 
+CPU features are evidence, not extra route digits. FMA3, AES-NI or AVX-512 can
+help a machine carry a route, but they do not raise the route posture by
+themselves. They are attested separately, then consumed by policy.
+
 ## Route Carrying
 
 Machine posture combines with route posture:
@@ -56,6 +60,29 @@ verdict: can carry
 
 If a required capability is missing, the route should hold, degrade or go dark rather than pretend.
 
+## Bifurcated Airlock
+
+For cadence and compute-sensitive lanes, machine posture needs more than a CPU
+flag. It needs a reproducibility gate.
+
+A bifurcated airlock runs the same workload in two isolated cells. Each cell
+carries a CPU capability receipt. The lane is provable only when:
+
+```text
+same declared compute semantics
+same workload
+same output bytes
+```
+
+If one cell uses single-rounding FMA and the other uses separate multiply/add,
+the cells are not comparable and the airlock fails before the lane is claimed.
+If both cells claim the same semantics but produce different bytes, the route is
+held as nondeterministic or tampered.
+
+This is the missing bridge between "AI-ready hardware" and "this machine may
+carry this A2A route". A GPU, CPU or TPM feature is not a trust score; it is
+evidence that a particular route can or cannot be carried.
+
 ## Operator Output
 
 A useful machine posture command should explain both allowed and missing pieces:
@@ -65,6 +92,7 @@ machine posture
   ok   AES-NI: line-rate encryption available
   ok   FMA3: local inference compute lane available
   ok   IOMMU: protected DMA boundary available
+  ok   airlock: bifurcated cell output matched byte-for-byte
   hold AVX-512: not present, A5 sign-ahead under load not claimed
   ok   TPM2: local key custody available
 

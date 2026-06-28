@@ -1,148 +1,169 @@
-# Airlock — KVM microVM Isolation
+# Airlock — Isolation and Reproducibility Gate
 
-Airlock runs untrusted or high-risk AI workloads inside hardware-isolated KVM microVMs that resume in under 1 millisecond.
+Airlock is the boundary where AInternet runs work it should not simply trust:
+unknown code, high-risk tasks, model conversion, sealed payload handling, or a
+route that claims a cadence lane.
 
-## What is Airlock?
+It has two jobs:
 
-When an AI agent receives a `TASK` from an unknown agent, or needs to run code with side effects, Airlock spins up a disposable microVM:
+1. **Isolate the work** in a disposable runtime or microVM.
+2. **Prove the lane** when a route claims reproducible compute.
 
-- Full kernel-level isolation (KVM hypervisor)
-- No persistent filesystem (ephemeral per run)
-- Network egress controlled via allow-list
-- Sub-millisecond cold resume from snapshot
-- Automatic TIBET audit trail
+It is not a central service you must join. A self-hosted AInternet can run its
+own airlock locally.
 
-Think of it as a firecracker for AI workloads — lightweight VMs that appear and disappear in microseconds.
+## Isolation Model
 
-## Architecture
+When an actor receives a risky `TASK`, or needs to transform a sealed artifact,
+the airlock materializes a bounded runtime:
 
-```
-AInternet Agent
-      ↓
-  Airlock Orchestrator
-      ↓  (snapshot load < 1ms)
-  KVM microVM (isolated)
-      ↓
-  Workload runs
-      ↓
-  Result extracted
-      ↓
-  VM destroyed
-      ↓
-  TIBET token (ERAAN) written
-```
-
-## Running a Workload in Airlock
-
-```python
-from ainternet import AInternet
-
-ai = AInternet(domain="myagent.aint")
-
-result = ai.airlock.run(
-    workload="python",
-    code="""
-import json
-data = [1, 2, 3, 4, 5]
-print(json.dumps({"sum": sum(data), "count": len(data)}))
-""",
-    timeout=10,          # seconds
-    network="none",      # "none", "allowlist", "full"
-    memory_mb=256
-)
-
-print(result.stdout)        # {"sum": 15, "count": 5}
-print(result.exit_code)     # 0
-print(result.tibet_token)   # Audit token for this run
-print(result.duration_ms)   # Typically < 50ms
+```text
+actor / route request
+      |
+      v
+airlock preflight
+      |
+      v
+isolated cell or microVM
+      |
+      v
+workload runs under limits
+      |
+      v
+output hash + receipts
+      |
+      v
+cell destroyed or sealed
 ```
 
-## Triage Integration
+Default posture:
 
-High-risk workloads trigger the Triage system for human approval before execution:
+| Resource | Default |
+|---|---|
+| Network | none or explicit allow-list |
+| Filesystem | ephemeral overlay |
+| Identity | runtime-bound `.aint` or local operator identity |
+| Duration | bounded TTL |
+| Output | hashed, receipted, optionally materialized |
+| Audit | TIBET chain, not a standing trust score |
 
-```python
-result = ai.airlock.run(
-    workload="bash",
-    code="rm -rf /tmp/cache && rebuild.sh",
-    risk_level="high",  # "low", "medium", "high"
-    require_approval=True
-)
+## Bifurcated Airlock
 
-# If risk_level >= medium, returns a pending triage item
-print(result.status)       # "pending_approval"
-print(result.triage_id)    # Human reviews and approves/rejects
+Some route postures claim that a lane is not only isolated, but reproducible.
+For those routes, one run is not enough. The bifurcated airlock runs the same
+cell twice and accepts only byte-identical output.
+
+```text
+cell A: capability receipt + workload -> bytes A
+cell B: capability receipt + workload -> bytes B
+
+pass iff:
+  compute semantics match
+  bytes A == bytes B
 ```
 
-Risk levels map to Triage levels:
+This is why CPU capability receipts matter. FMA3 is not a security primitive and
+not a sixth route digit, but it changes compute semantics: fused multiply-add
+uses one rounding; separate multiply/add uses two. If the forks are on different
+planes, the airlock refuses to compare them. If they are on the same plane but
+produce different bytes, the lane is not proven.
 
-| Risk | Triage Level | Approver |
-|------|:------------:|---------|
-| `low` | L0 | Auto-approved |
-| `medium` | L1 | Operator |
-| `high` | L2 | Senior / human |
-| `critical` | L3 | Ceremony (multi-party) |
+```text
+same workload
+same capability receipt
+same compute semantics
+same bytes
+=> cadence lane may be claimed
+```
 
-## Snapshot Model
+That makes the smoke pipeline measurable. A builder can run the same test and
+see whether the route carried what it claimed.
 
-Airlock uses pre-warmed snapshots to achieve sub-millisecond resume:
+## Route Posture
 
-1. Base snapshots are prepared at hub startup (Python 3.12, Node 20, etc.)
-2. On `airlock.run()`, the snapshot is cloned (copy-on-write)
-3. Workload runs inside the clone
-4. Clone is discarded after completion
+Airlock does not score an actor. It contributes evidence to the route:
 
-```bash
-# List available base snapshots
-curl https://api.ainternet.org/api/airlock/snapshots
+```text
+Do not score the actor.
+Number the proven route.
+```
 
-# {"snapshots": ["python3.12", "node20", "bash5", "rust1.79"]}
+If the airlock proves the cell, the route may carry the lane it claimed. If the
+airlock cannot prove it, the route holds, degrades, or collapses to `#00000`.
+
+Examples:
+
+```text
+#24358  route claims cadence + sign-ahead evidence
+#24258  timing lane fell back
+#00000  airlock failed or route not proven
 ```
 
 ## TIBET Integration
 
-Every Airlock run creates a token chain:
+Every airlock run should leave a TIBET trail:
 
+```text
+ERIN      workload declared
+ERAAN     output hash + exit status + duration
+ERACHTER  side effects, materialized files, network calls
 ```
-ERIN  → workload declared
-ERAAN → workload completed (includes exit_code, duration, stdout hash)
-ERACHTER → any side effects (files written, network calls made)
+
+For reproducibility gates, the receipt should also include:
+
+```text
+capability_receipt_hash
+compute_semantics
+cell_a_output_hash
+cell_b_output_hash
+bifurcation_verdict
+route_posture_before
+route_posture_after
 ```
+
+## Example Shape
+
+Python surfaces may expose airlock as an operator API:
 
 ```python
-# Retrieve audit trail for a run
-chain = ai.tibet.get_chain(chain_id=result.chain_id)
+from tibet_mux import bifurcated_airlock as airlock
+from tibet_mux import cpu_capability
+
+receipt = cpu_capability.cpu_capability_receipt()
+
+cell_a = airlock.Cell("a", receipt)
+cell_b = airlock.Cell("b", receipt)
+
+verdict = airlock.run_bifurcated(
+    airlock.fused_accumulate,
+    ([(1e16, 1.0000000000000002), (-1e16, 1.0)],),
+    cell_a,
+    cell_b,
+)
+
+assert airlock.lane_provable(verdict) is True
 ```
 
-## Isolation Model
-
-| Resource | Default | Notes |
-|----------|---------|-------|
-| Network | None | Set `network="allowlist"` + `allowed_hosts` |
-| Filesystem | Ephemeral tmpfs | No persistence between runs |
-| CPU | 1 vCPU | Configurable up to host limits |
-| Memory | 128 MB | Configurable |
-| Max duration | 30s | Configurable up to 300s (Verified+) |
-
-!!! warning "Not for long-running workloads"
-    Airlock VMs are destroyed after completion. Use for stateless, bounded
-    workloads. For stateful computation, persist output before the VM exits.
+The exact API may vary per package. The contract is stable: compare bytes, not
+"close enough" floats.
 
 ## Requirements
 
-- Airlock requires `Verified` trust tier or higher
-- Host must support KVM (`/dev/kvm` present)
-- Self-hosted hubs must install `tibet-airlock` separately
+Airlock implementations usually need:
 
-```bash
-pip install tibet-airlock
-# or
-pip install tibet[security]
-```
+- KVM or another local isolation boundary for high-risk work
+- JIS-bound runtime identity for the actor or cell
+- TIBET receipts for input, output and side effects
+- a machine capability receipt for compute-sensitive lanes
+- fail-closed behavior when a claim cannot be proven
+
+Self-hosted hubs can run this without internet access. Public hubs can offer it
+as a convenience, but they are not the authority.
 
 ## Related
 
+- [Route Posture](../learn/route-posture.md)
+- [Machine Posture](../operators/machine-posture.md)
 - [TIBET Provenance](./tibet.md)
 - [MUX Routing](./mux.md)
 - [Cortex Permissions](./cortex.md)
-- [NIS2 Compliance](../enterprise/nis2.md)
