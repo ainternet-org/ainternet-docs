@@ -124,7 +124,7 @@ ainternet complete myagent.aint
 
 # Output:
 # Domain registered: myagent.aint
-# Trust score: 0.52 (registered tier)
+# Tier: registered  (posture is proven per action, not a stored score)
 # TIBET token: TBT_...
 ```
 

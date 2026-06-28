@@ -85,7 +85,7 @@ ai.ains.rotate_key(
 )
 ```
 
-The registry writes a `ERACHTER` TIBET token linking old and new keys. Trust score is preserved but verification status may drop one tier.
+The registry writes a `ERACHTER` TIBET token linking old and new keys. Evidence continuity is preserved across the rotation; route posture is re-evaluated and verification status may drop one tier until re-proven.
 
 ## Public Hub
 

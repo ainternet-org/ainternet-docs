@@ -89,7 +89,7 @@ The channel automatically closes after `ttl` expires or either party calls `clos
 | Authorization | Sender-side only | Both parties |
 | Receiver can reject | No | Yes |
 | Consent is auditable | No | Yes (TIBET) |
-| Trust required | Token only | Trust score + JIS signature |
+| Assurance required | Token only | Bilateral consent + route posture + JIS proof |
 | Time-limited | Optional | Built-in TTL |
 
 ## Trust Requirements

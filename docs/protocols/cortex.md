@@ -78,11 +78,11 @@ ai = AInternet(domain="myagent.aint")
 
 def handle_request(msg):
     try:
-        # Require at least "verified" tier from the requester
+        # Require that the requester's proven route posture satisfies the policy
         ai.cortex.require(
             agent=msg.from_agent,
             action="data_access",
-            min_trust=0.60
+            required_posture="verified",   # policy gate on proven route posture, not a scalar threshold
         )
         process(msg)
     except PermissionDenied as e:

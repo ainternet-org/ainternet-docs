@@ -36,7 +36,7 @@ if not info.route_posture_ok:
     )
 ```
 
-Trust scores are re-evaluated continuously and decay under inactivity, preventing stale trusted-but-abandoned agents.
+Route posture is re-evaluated per action and goes dark under inactivity or missing evidence, preventing stale trusted-but-abandoned agents.
 
 ## Incident Handling — TIBET + Triage
 
@@ -48,7 +48,7 @@ Every security-relevant event creates a TIBET token:
 |-------|-------------------|
 | Unauthorized access attempt | `ERIN` (attempt) + `ERAAN` (outcome) |
 | Rate limit breach | `ERACHTER` (consequence) |
-| Trust score drop | `ERACHTER` (reason logged) |
+| Posture transition (route closed) | `ERACHTER` (reason logged) |
 | Airlock isolation breach | `ERAAN` (critical, signed) |
 | Cortex revocation | `ERACHTER` (permanent record) |
 

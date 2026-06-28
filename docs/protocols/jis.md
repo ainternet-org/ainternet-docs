@@ -119,7 +119,7 @@ proof = AgentIdentity.succession(
 ai.ains.rotate_key(succession_proof=proof)
 ```
 
-A `ERACHTER` TIBET token is created linking the old and new keys. Trust score is preserved; verification status may drop one tier.
+A `ERACHTER` TIBET token is created linking the old and new keys. Identity continuity is preserved across the rotation; route posture is re-evaluated and verification status may drop one tier until re-proven.
 
 ## Interoperability
 
