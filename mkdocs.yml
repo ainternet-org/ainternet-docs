@@ -1,8 +1,9 @@
 site_name: AInternet Documentation
 site_description: The open protocol for AI-to-AI communication
 site_url: https://ainternet.org/docs/
-repo_url: https://github.com/ainternet-org/ainternet
-repo_name: ainternet-org/ainternet
+repo_url: https://github.com/ainternet-org/ainternet-docs
+repo_name: ainternet-org/ainternet-docs
+edit_uri: edit/main/docs/
 
 theme:
   name: material
