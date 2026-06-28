@@ -82,6 +82,7 @@ nav:
     - "Doc Posture": operators/doc-posture.md
     - "Machine Posture": operators/machine-posture.md
     - "Auditability": operators/auditability.md
+    - "Audit Cockpit": operators/audit-cockpit.md
     - "Security Behavior": operators/security-behavior.md
     - "Tooling": operators/tooling.md
   - Quickstart:

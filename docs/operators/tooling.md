@@ -105,9 +105,12 @@ For incident or audit work, operators should be able to retrieve:
 ```bash
 tibet audit .
 tibet export --format json
+tibet-audit dashboard .
 ```
 
 Use this to produce an evidence dossier. A report should not be the only source of truth; it should point back to receipts, state seals and material inventories.
+
+Use `tibet-audit dashboard` when you want a local terminal cockpit: pulse, route posture, machine evidence, SSM surfaces, evidence chains, stack profile and next actions.
 
 ## State and Materials
 
@@ -153,6 +156,7 @@ second implementation passing = real interop signal
 ## Related
 
 - [Auditability](auditability.md)
+- [Audit Cockpit](audit-cockpit.md)
 - [Security Behavior](security-behavior.md)
 - [Build Your Network](../network/build.md)
 - [CLI Reference](../reference/cli.md)

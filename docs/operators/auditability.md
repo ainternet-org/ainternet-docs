@@ -56,6 +56,14 @@ tibet export --format json
 tibet audit .
 ```
 
+For a readable local cockpit over the evidence spine:
+
+```bash
+tibet-audit dashboard .
+```
+
+See [Audit Cockpit](audit-cockpit.md).
+
 Network checks should be read correctly:
 
 ```bash
@@ -106,6 +114,7 @@ This is compliance-enabling. It is not a certification claim.
 ## Related
 
 - [TIBET](../protocols/tibet.md)
+- [Audit Cockpit](audit-cockpit.md)
 - [Wayback](../protocols/wayback.md)
 - [Pol](../protocols/pol.md)
 - [EU AI Act Mapping](../enterprise/eu-ai-act.md)
