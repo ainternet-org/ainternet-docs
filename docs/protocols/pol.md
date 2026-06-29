@@ -156,6 +156,18 @@ chain = ai.tibet.get_chain(chain_id=result.chain_id)
     Use Pol with a cron job or the AInternet scheduler to maintain continuous
     health visibility with full audit history.
 
+## Conformance
+
+Docs explain the protocol. Vectors decide whether another implementation reports health and remediation evidence the same way.
+
+| Vector family | What it must prove |
+|---|---|
+| `tibet-evidence-conformance` | check start, result, remediation and failure receipts reconstruct |
+| `tibet-security-conformance` | remediation requires the configured operator posture |
+| operator health vectors | process, URL, TLS and template checks agree across runners |
+
+Fail-closed cases: missing receipt store, unauthorised remediation, stale template, failed evidence export, unknown process target.
+
 ## Related
 
 - [TIBET Provenance](./tibet.md)

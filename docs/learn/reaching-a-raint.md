@@ -192,3 +192,10 @@ A port is a place you knock on. A raint is an actor you prove yourself to — an
 difference — identity instead of address, attestation instead of access — is what lets machines, processes,
 and agents reach each other safely when none of them stay still. That's AInternet, running small enough to
 hold in one hand and watch disappear.
+
+## Related
+
+- [Redstone RAINT Lab](../builders/redstone-raint-lab.md)
+- [Runtime Box Model](../builders/runtime-box-model.md)
+- [AInternet Function Surfaces](aint-function-surfaces.md)
+- [MUX](../protocols/mux.md)

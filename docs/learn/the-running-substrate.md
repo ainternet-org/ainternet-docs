@@ -92,3 +92,10 @@ Identity-bound capability transfer: **offer-first** over proximity, **request-fi
 > A Rust floor you can run anywhere, a Python surface to operate it, one identity-and-provenance model through both.
 
 Nothing here needs a slogan. It's a substrate: small kernels that prove who and what, an operator layer to wire them, and sealed envelopes to move anything between them — on your own terms, down to the metal.
+
+## Related
+
+- [Build Posture](../network/build-posture.md)
+- [Transfer Carriers](../reference/transfer-carriers.md)
+- [Runtime Box Model](../builders/runtime-box-model.md)
+- [The CAINT GPU Mailbox Lab](caint-gpu-mailbox-lab.md)

@@ -72,6 +72,7 @@ nav:
   - Network:
     - "Primitives": network/primitives.md
     - "Build Your Network": network/build.md
+    - "Build Posture": network/build-posture.md
     - "Go Online": network/federation.md
   - Builders:
     - "Build on AInternet": builders/extending.md

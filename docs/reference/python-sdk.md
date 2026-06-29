@@ -16,7 +16,7 @@ ai = AInternet(
     hub="https://api.ainternet.org",            # Hub URL
     identity_path="~/.ainternet/identity.json", # JIS identity file
     nat_traversal=False,                        # Enable tibet-overlay NAT
-    trust_min=0.40                              # Reject messages below this trust
+    required_posture="#24358"                   # Policy floor for routed actions
 )
 ```
 
@@ -93,9 +93,9 @@ msg.reply(content, poll_type="ACK")  # Convenience method
 |--------|---------|-------------|
 | `check(action, target=None)` | `PermissionResult` | Check if action allowed |
 | `permissions(domain)` | `PermissionMatrix` | Full matrix for agent |
-| `matrix()` | `TierMatrix` | Global tier capability matrix |
+| `matrix()` | `PolicyMatrix` | Global posture-floor capability matrix |
 | `require(agent, action, min_posture=None)` | None | Assert permission (raises `PermissionDenied`) |
-| `vouch(target, endorsement, trust_boost)` | `VouchResult` | Vouch for agent (Core only) |
+| `introduce(target, relation, expires)` | `RelationResult` | Record a scoped relation candidate |
 
 ## `ai.snaft` — Bilateral Consent
 

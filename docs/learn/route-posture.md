@@ -5,12 +5,12 @@
 > AInternet does not rate actors. It reconstructs routes.
 
 This is the canonical reference for how AInternet decides what an actor may do.
-If older pages still mention a scalar "trust score", **this page is the source of
-truth** — the score model is retired.
+If older pages still mention a scalar reputation number, **this page is the source
+of truth** — the scalar model is retired.
 
-## Why a trust score is the wrong shape
+## Why a scalar rating is the wrong shape
 
-A trust score (`trust = 0.87`) says an actor has stable moral credit. But an
+An actor rating (`trust = 0.87`) says an actor has stable moral credit. But an
 actor on AInternet is usually a *fleeting runtime*: a process binds a key, passes
 a JIS challenge, opens a consent relation, runs through some hardware lane, and
 the route expires. Five minutes later the same name is in a different posture, on
@@ -47,7 +47,7 @@ re-scored, the **route** changed:
 #24358 -> #00000   dark route — no valid posture
 ```
 
-The old "trust score" survives only as a **human index into evidence**: *"show me
+The old scalar survives only as a **human index into evidence**: *"show me
 what #24358 meant, and why it changed to #24247."*
 
 ## Posture is also a gate
@@ -139,3 +139,10 @@ This is implemented and public: `pip install -U tibet-mux` →
 `tibet_mux.machine_posture`, `tibet_mux.cpu_capability` and
 `tibet_mux.bifurcated_airlock`. The route is the output of attestation — and the
 attestation is something you can re-check yourself.
+
+## Related
+
+- [Route Posture API](../reference/route-posture-api.md)
+- [Build Posture](../network/build-posture.md)
+- [MUX](../protocols/mux.md)
+- [Machine Posture](../operators/machine-posture.md)

@@ -2,6 +2,10 @@
 
 AInternet is best understood as a chain of primitives. Each primitive answers one security or coordination question. Do not skip the earlier layers: a route is not trust, a message is not consent, and a log is not proof.
 
+## Prerequisites
+
+Read this before the runnable path. If you want commands first, start with [Local Node Quickstart](../quickstart/local-node.md), then return here to understand what each command is proving.
+
 ## 1. Actor Identity: JIS
 
 An actor is anything that can act: an AI agent, service, device, operator, node or internal automation.
@@ -255,6 +259,14 @@ Keep the separation clear:
 | Documentation | how and reference | these protocol pages |
 | Machine-readable | what an AI agent can load and call | `resources.json`, `api.json`, `upip.json` |
 | Conformance | what another implementation must reproduce | JSON vector families |
+
+## Machine-Readable Primitive Map
+
+| Surface | Purpose |
+|---|---|
+| `https://ainternet.org/resources.json` | index of docs, standards, templates and conformance |
+| `https://ainternet.org/templates/stack-build-map.json` | primitive/package/vector mapping |
+| `https://ainternet.org/api.json` | callable verbs and proof rules |
 
 ## Related
 

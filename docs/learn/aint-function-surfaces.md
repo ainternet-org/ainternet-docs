@@ -173,3 +173,10 @@ unless `tibet-ping` itself is a long-lived actor with its own key, policy and au
 ## The Line To Keep
 
 An `.aint` function is not just a tool endpoint. It is a callable surface whose existence is decided by identity, consent, relation and policy, and whose use leaves a receipt.
+
+## Related
+
+- [The Suffix Tree](the-suffix-tree.md)
+- [Reaching a Raint](reaching-a-raint.md)
+- [MUX](../protocols/mux.md)
+- [Route Posture API](../reference/route-posture-api.md)

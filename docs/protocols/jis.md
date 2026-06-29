@@ -132,6 +132,17 @@ vk = VerifyKey(bytes.fromhex(public_key_hex))
 vk.verify(message, bytes.fromhex(signature_hex))
 ```
 
+## Conformance
+
+Docs explain the protocol. Vectors decide whether another implementation proves identity the same way.
+
+| Vector family | What it must prove |
+|---|---|
+| `ztip-conformance` | key generation, fresh challenge, signature verification and namespace boundaries |
+| `tibet-evidence-conformance` | identity proof and succession events are linked into receipts |
+
+Fail-closed cases: stale nonce, wrong key, replayed proof, malformed namespace, unsigned succession, tombstoned identity.
+
 ## Related
 
 - [AINS Name Service](./ains.md)

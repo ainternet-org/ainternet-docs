@@ -270,3 +270,10 @@ anything else = 0x0000
 ```
 
 That is the core Redstone lesson: a small AInternet can be one household, one runtime, one AI, two RAINTs in a lab, or a continent-scale mesh. The primitive is the same.
+
+## Related
+
+- [Runtime Box Model](runtime-box-model.md)
+- [Build Posture](../network/build-posture.md)
+- [Reaching a Raint](../learn/reaching-a-raint.md)
+- [Airlock](../protocols/airlock.md)

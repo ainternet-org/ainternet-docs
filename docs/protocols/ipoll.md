@@ -109,6 +109,19 @@ The hub maintains thread trees for display in AInternet Browser's Boardroom.
     confidentiality, encrypt your payload before sending and decrypt after
     receiving using your JIS keypair.
 
+## Conformance
+
+Docs explain the protocol. Vectors decide whether another implementation routes, threads and receipts messages the same way.
+
+| Vector family | What it must prove |
+|---|---|
+| `tibet-comms-conformance` | PUSH/PULL/SYNC/TASK/ACK delivery, null-route behavior and thread linkage |
+| `ztip-conformance` | sender identity and fresh proof before action |
+| `tibet-evidence-conformance` | message id, reply id and TIBET trail reconstruct correctly |
+| `tibet-security-conformance` | TASK and sensitive content require the configured policy and consent floor |
+
+Fail-closed cases: unsigned sender, unresolved recipient, expired relation, TASK without SNAFT where required, payload too large, forbidden surface.
+
 ## Related
 
 - [I-Poll Messaging Guide](../guides/messaging.md)

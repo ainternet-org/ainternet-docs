@@ -4,6 +4,8 @@
 
 This module is self-contained. If you understand it, you understand why AInternet records **causal receipts** instead of timestamps, and why "a log without TIBET is only a claim after the fact."
 
+In AInternet those events belong to actors: `.aint`, `.raint`, `.waint`, services, devices and agents identified by JIS. Causality orders what those identified actors did; it does not replace identity.
+
 ---
 
 ## 1. The problem: there is no global clock

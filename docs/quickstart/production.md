@@ -195,6 +195,17 @@ AInternet docs should therefore explain:
 - [ ] Local/private operation works before public federation
 - [ ] Public `.aint` actors are treated as discoverable, not automatically trusted
 
+## Machine-Readable Companion
+
+Production automation should load pinned machine surfaces:
+
+| Surface | Use |
+|---|---|
+| `https://ainternet.org/resources.json` | standards, docs, templates and conformance |
+| `https://ainternet.org/api.json` | callable endpoints and proof rules |
+| `https://ainternet.org/templates/stack-build-map.json` | map controls to primitives and packages |
+| `https://ainternet.org/ai-scan.json` | compact AI-readable state scan |
+
 ## Next Steps
 
 | Goal | Read |

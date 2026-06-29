@@ -4,6 +4,13 @@ This guide is for building a decentralized zero-trust AInternet-style network. I
 
 You are not joining one central AInternet. You are making your own AInternet: a local trust network for your actors, devices, services and AI runtimes. It may stay private forever. It may later connect to another AInternet. It may also claim public `.aint` names. Those are later choices, not the foundation.
 
+## Prerequisites
+
+You need a shell, Python 3.10+ and the local node profile from [Local Node Quickstart](../quickstart/local-node.md). This page explains the model; [Build Posture](build-posture.md) is the step-by-step proof ladder.
+
+!!! note "Build posture"
+    This page explains the model. The step-by-step proof ladder lives in [Build Posture](build-posture.md). Use it to check that each build step lights the route-posture digit it claims and has a vector proving it.
+
 ## The Path
 
 Read the docs in this order if you are building from zero:
@@ -387,9 +394,24 @@ The rule is:
 if it cannot be tested by vectors, it is still a claim
 ```
 
+## Machine-Readable Build Map
+
+For AI agents and build automation:
+
+| Surface | Use |
+|---|---|
+| `https://ainternet.org/templates/stack-build-map.json` | map human intent to primitives, packages and vector families |
+| `https://ainternet.org/upip.json` | load build profiles and recipes |
+| `https://ainternet.org/resources.json` | discover docs, standards, templates and conformance |
+| `https://ainternet.org/api.json` | inspect callable verbs and proof rules |
+
+If you run fully local, copy these into your own node and pin the versions you build against.
+
 ## Related
 
 - [Network Primitives](primitives.md)
+- [Build Posture](build-posture.md)
+- [Local Node Quickstart](../quickstart/local-node.md)
 - [Build on AInternet](../builders/extending.md)
 - [Production Setup](../quickstart/production.md)
 - [Self-hosted Setup](../enterprise/self-hosted.md)

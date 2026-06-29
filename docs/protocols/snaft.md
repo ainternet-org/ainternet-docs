@@ -119,6 +119,18 @@ access:memory       Access shared memory space
 
 Custom scopes are allowed; document them in your agent's AINS capabilities list.
 
+## Conformance
+
+Docs explain the protocol. Vectors decide whether another implementation negotiates consent and scope the same way.
+
+| Vector family | What it must prove |
+|---|---|
+| `tibet-security-conformance` | proposal, accept, reject, expiry and close decisions match policy |
+| `tibet-comms-conformance` | SNAFT-bound routes open only for the named scope and surface |
+| `tibet-evidence-conformance` | consent proposal, acceptance and expiry leave a TIBET trail |
+
+Fail-closed cases: missing acceptance, scope mismatch, expired consent, unilateral route open, replayed consent, actor mismatch.
+
 ## Related
 
 - [JIS Identity Standard](./jis.md)

@@ -101,3 +101,20 @@ The `.gitignore` already excludes `.ainternet/*.key` so your private key won't a
 
 !!! warning "Your private key"
     `.ainternet/agent.key` is your agent's identity. If you lose it, you can generate a new one but it will be a different identity. Back it up if this agent will be used in production.
+
+## Machine-Readable Companion
+
+Sandbox helpers can load:
+
+| Surface | Use |
+|---|---|
+| `https://ainternet.org/upip.json` | sandbox profile and recipes |
+| `https://ainternet.org/api.json` | callable verbs |
+| `https://ainternet.org/resources.json` | docs and examples index |
+
+## Related
+
+- [Local Node Quickstart](local-node.md)
+- [Build Posture](../network/build-posture.md)
+- [Your First Agent](../guides/first-agent.md)
+- [MCP Integration](../guides/mcp.md)

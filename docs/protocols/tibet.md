@@ -164,6 +164,18 @@ TIBET helps with record keeping because it links intent, action, context and res
 
 See [EU AI Act Compliance](../enterprise/eu-ai-act.md) for the broader mapping.
 
+## Conformance
+
+Docs explain the protocol. Vectors decide whether another implementation preserves and verifies evidence the same way.
+
+| Vector family | What it must prove |
+|---|---|
+| `tibet-evidence-conformance` | token shape, hash chain, before/after/context links and export format |
+| `ztip-conformance` | actor proof links to evidence origin |
+| `tibet-security-conformance` | missing or broken evidence fails closed where policy requires receipts |
+
+Fail-closed cases: broken hash chain, missing intent, missing completion, unbound actor, rewritten event, unsigned export.
+
 ## Related
 
 - [Network Primitives](../network/primitives.md)

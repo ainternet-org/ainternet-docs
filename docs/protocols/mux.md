@@ -115,6 +115,18 @@ See [Self-Hosted Setup](../enterprise/self-hosted.md).
     # Logs: [MUX] intent=ipoll_push routed to i-poll-engine in 1.2ms
     ```
 
+## Conformance
+
+Docs explain the protocol. Vectors decide whether another implementation opens, holds or darkens routes the same way.
+
+| Vector family | What it must prove |
+|---|---|
+| `tibet-comms-conformance` | resolve, challenge, route-open, route-close and null-route behavior |
+| `tibet-security-conformance` | required posture, relation and policy gates fail closed |
+| `tibet-evidence-conformance` | route decisions and posture transitions are receipted |
+
+Fail-closed cases: unknown actor, stale posture, consent expired, posture changed mid-route, audit not bound, forbidden surface.
+
 ## Related
 
 - [Airlock Isolation](./airlock.md)

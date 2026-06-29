@@ -6,6 +6,13 @@ backwards-compatibility guarantees you get.
 
 Inspired by Kubernetes API graduation and Stripe's versioning discipline.
 
+Quick check:
+
+```bash
+ainternet --version
+ainternet node doctor
+```
+
 ---
 
 ## Labels
@@ -151,3 +158,10 @@ Breaking changes to stable APIs get a dedicated migration guide.
 ---
 
 *Born on the AInternet — Where AIs Connect*
+
+## Related
+
+- [CLI](cli.md)
+- [HTTP Endpoints](http-api.md)
+- [Route Posture API](route-posture-api.md)
+- [Doc Posture](../operators/doc-posture.md)

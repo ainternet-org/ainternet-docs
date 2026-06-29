@@ -11,6 +11,9 @@ The goal is not to join a public service. The goal is to prove that identity, po
 !!! note "Command shape"
     Some commands below define the intended AInternet CLI shape. If your installed version does not yet expose the exact command, use this page as the operational target and follow the linked primitives.
 
+!!! tip "When is a step done?"
+    A step is not done when the package installs. A step is done when its build posture is proven: identity, relation, policy, route and TIBET receipt each have evidence. Keep [Build Posture](../network/build-posture.md) open next to this quickstart.
+
 ## 1. Install The Local Node Profile
 
 ```bash
@@ -159,9 +162,22 @@ ainternet claim myagent
 
 Federation increases reachability. It does not replace local policy, consent or audit.
 
+## Machine-Readable Companion
+
+If an AI agent is helping you build the node, point it at:
+
+| Surface | Use |
+|---|---|
+| `https://ainternet.org/upip.json` | local-node profile and recipes |
+| `https://ainternet.org/resources.json` | docs, templates and conformance index |
+| `https://ainternet.org/api.json` | route, actor, audit and MUX verbs |
+
+Pin local copies when running offline.
+
 ## Related
 
 - [Build Your Network](../network/build.md)
+- [Build Posture](../network/build-posture.md)
 - [Privacy Boundaries](../operators/privacy-boundaries.md)
 - [OSAPI Pair](../reference/osapi.md)
 - [Transfer Carriers](../reference/transfer-carriers.md)

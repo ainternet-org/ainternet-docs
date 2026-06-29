@@ -142,6 +142,18 @@ Your seals are yours: keep them on your own store, and share one as a consented 
 | Restore from seal | Verified |
 | Access another agent's seals | Core + SNAFT |
 
+## Conformance
+
+Docs explain the protocol. Vectors decide whether another implementation seals, diffs and restores state the same way.
+
+| Vector family | What it must prove |
+|---|---|
+| `tibet-evidence-conformance` | seal hash, diff, restore pointer, SBOM and timeline reconstruct |
+| `tibet-security-conformance` | restore and cross-actor access require policy and SNAFT |
+| `tibet-comms-conformance` | shared seals move as consented capsules, not blind fetch-and-run scripts |
+
+Fail-closed cases: unsigned seal, broken chain, restore without consent, stale SBOM, hash mismatch, unverified Phantom Resume capsule.
+
 ## Related
 
 - [TIBET Provenance](./tibet.md)

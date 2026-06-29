@@ -1,6 +1,6 @@
 # The Contract Is the System
 
-> *Computo et comprobo, ergo fui* — I compute and I verify, therefore I was. A small Latin adjustment to Descartes, and the capstone of this whole track. There's a lot of work right now trying to solve trust in autonomous agent systems — AI trust scores, verifiable credentials, contractual mandates between agents. Necessary work, all of it. But much of it layers human governance constructs over code, and that can't be the only layer.
+> *Computo et comprobo, ergo fui* — I compute and I verify, therefore I was. A small Latin adjustment to Descartes, and the capstone of this whole track. There's a lot of work right now trying to solve assurance in autonomous agent systems — reputation numbers, verifiable credentials, contractual mandates between agents. Necessary work, all of it. But much of it layers human governance constructs over code, and that can't be the only layer.
 
 This is a claim we're willing to make plainly — not as marketing, but because the architecture has been put under adversarial test and can be shown measurably. *(The audit and the numbers are in [Operating in the Agentic Era](operating-in-the-agentic-era.md) and [The Running Substrate](the-running-substrate.md); the pentest is below.)*
 
@@ -45,3 +45,10 @@ That's why this is a claim we make without hedging: it has been attacked, it has
 The contract of 2026 cannot be a document on top of the system. **It must be the system itself.**
 
 > *Computo et comprobo, ergo fui.* That's the only signature an API can honestly give.
+
+## Related
+
+- [Route Posture, Not a Trust Score](route-posture.md)
+- [Operating in the Agentic Era](operating-in-the-agentic-era.md)
+- [The Running Substrate](the-running-substrate.md)
+- [TIBET](../protocols/tibet.md)

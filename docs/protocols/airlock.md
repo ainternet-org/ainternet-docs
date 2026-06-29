@@ -160,6 +160,18 @@ Airlock implementations usually need:
 Self-hosted hubs can run this without internet access. Public hubs can offer it
 as a convenience, but they are not the authority.
 
+## Conformance
+
+Docs explain the protocol. Vectors decide whether another implementation isolates and reports risky work the same way.
+
+| Vector family | What it must prove |
+|---|---|
+| `tibet-security-conformance` | unknown/risky/unsafe/approved paths produce the same quarantine, deny or run decision |
+| `tibet-evidence-conformance` | inputs, outputs, side effects and bifurcation verdicts are receipted |
+| `tibet-comms-conformance` | allowed surfaces route through MUX; forbidden surfaces stay dark |
+
+Fail-closed cases: missing capability receipt, divergent bifurcation bytes, no isolation boundary, unsafe artifact, stale consent.
+
 ## Related
 
 - [Route Posture](../learn/route-posture.md)

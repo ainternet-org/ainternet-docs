@@ -91,3 +91,10 @@ Each time, the strongest protection turns out to be **absence**: the secret that
 > A WAF makes you a cleverer wall. The cat makes you no longer a target.
 
 The attacker's whole method is to learn your shape by poking it. Dark-by-default gives the poke nothing back — no error to read, no service to map, no key to lift. Everything above the gate can be open and provable, precisely because the gate gives nothing away.
+
+## Related
+
+- [MUX](../protocols/mux.md)
+- [Keys Never Leave Your Machine](keys-never-leave.md)
+- [Security Behavior](../operators/security-behavior.md)
+- [Route Posture](route-posture.md)

@@ -8,6 +8,10 @@ This page is reference documentation for the online path. The compact doctrine l
 - [Doctrine L0](https://ainternet.org/doctrine-l0.html)
 - [Causal Action Receipts](https://ainternet.org/causal-action-receipts.html)
 
+## Prerequisites
+
+Do not federate first. Build a local node, prove one route, and inspect one TIBET receipt before opening an outside lane. Use [Build Posture](build-posture.md) as the gate and [Local Node Quickstart](../quickstart/local-node.md) as the runnable path.
+
 ## Rule
 
 ```text

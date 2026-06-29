@@ -47,3 +47,10 @@ gguf2oom             = airlock (sniff → verify → seal)
 
 > **A model file can be more than weights: a sovereign, sniffable, auditable AI artifact.**
 > The format opens the door; the runtime is early. The primitive that matters is the artifact contract.
+
+## Related
+
+- [The Running Substrate](the-running-substrate.md)
+- [Keys Never Leave Your Machine](keys-never-leave.md)
+- [Airlock](../protocols/airlock.md)
+- [Transfer Carriers](../reference/transfer-carriers.md)

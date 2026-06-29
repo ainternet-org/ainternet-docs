@@ -100,3 +100,10 @@ The gate reacts to how you're proven *now* — never to a reputation on file. (A
 > Identity is the key; the suffix is which clipped right is active this instant.
 
 You don't get more powerful by changing your hat — the hat only ever shows a right you already hold, worn for the moment you need it. That's what lets one tree carry a person, a device, and an AI without ever letting a leaf reach above its station. See the same suffix do its work at the gate in [The Cat Principle](the-cat-principle.md), and the whole picture on the site: [Handing out identity](https://ainternet.org/handing-out-identity.html).
+
+## Related
+
+- [Bind an AI, Runtime-Bound](bind-an-ai.md)
+- [AInternet Function Surfaces](aint-function-surfaces.md)
+- [Route Posture](route-posture.md)
+- [JIS](../protocols/jis.md)

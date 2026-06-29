@@ -70,3 +70,10 @@ SIGN-AHEAD (sign as a precondition, prepared in the shadow):
 - The hardware path: a `cudaHostAlloc` pinned ring + `userfaultfd` fill, and a `cudaMemcpy` throughput loop with a CPU sampler.
 
 Don't take the numbers from us — run them on your own cards and compare. That's the point: *the route is the output of attestation, and the attestation is something you can re-check.*
+
+## Related
+
+- [The Running Substrate](the-running-substrate.md)
+- [Models Are Mounted Artifacts](models-are-mounted-artifacts.md)
+- [Machine Posture](../operators/machine-posture.md)
+- [Route Posture API](../reference/route-posture-api.md)

@@ -102,3 +102,10 @@ There's no logged-in session to steal, because there's nothing *to* sit around â
 > Born local, kept local, signs detached, verified by all. The key never moves; only the proof does.
 
 That's not a convenience choice â€” it's the floor the whole stack stands on. An agent can be perfectly runtime-bound and every receipt perfectly chained, and it all means nothing if the key that signs them lives somewhere a stranger can reach. Keep the key home, and everything above it can be trusted.
+
+## Related
+
+- [Bind an AI, Runtime-Bound](bind-an-ai.md)
+- [The Cat Principle](the-cat-principle.md)
+- [JIS](../protocols/jis.md)
+- [Local Node Quickstart](../quickstart/local-node.md)

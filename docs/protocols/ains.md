@@ -52,7 +52,7 @@ Each registration event produces a [TIBET token](./tibet.md) that permanently an
 
 ## Posture Model
 
-The registry does **not** store a standing "trust score". A resolve returns the
+The registry does **not** store a standing scalar rating. A resolve returns the
 identity + its self-declared capabilities; the *posture* of any action is
 computed **per-action** as a [route posture number](../learn/route-posture.md)
 (`#RCTAM`) — proven at the moment of use, never a stored scalar.
@@ -96,6 +96,18 @@ https://brein.jaspervandemeent.nl/api/ains/
 ```
 
 Self-hosted deployments maintain their own registry and can peer with the public hub. See [Self-Hosted Setup](../enterprise/self-hosted.md).
+
+## Conformance
+
+Docs explain the protocol. Vectors decide whether another implementation resolves names and identity records the same way.
+
+| Vector family | What it must prove |
+|---|---|
+| `ztip-conformance` | domain claim, Ed25519 proof, key succession and tombstone semantics |
+| `tibet-comms-conformance` | resolve succeeds for known actors and returns no route for unknown actors |
+| `tibet-evidence-conformance` | registration and rotation events leave TIBET evidence |
+
+Fail-closed cases: malformed name, stale key, missing proof, unsigned rotation, unknown actor, expired succession.
 
 ## Related
 

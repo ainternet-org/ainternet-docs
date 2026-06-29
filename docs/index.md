@@ -75,6 +75,35 @@ This order matters. A message without identity is just traffic. A route without 
 
 ---
 
+## Start Here: Model, Build, Prove
+
+Use the docs in this order when you are new:
+
+```text
+learn the model -> build local -> prove the posture
+```
+
+| Step | Page | What you should have after it |
+|---|---|---|
+| 1 | [The Network Layer](learn/the-network-layer.md) | the mental model: actors, routes, receipts |
+| 2 | [Build Your Network](network/build.md) | the local architecture you are assembling |
+| 3 | [Build Posture](network/build-posture.md) | the proof ladder for each build step |
+| 4 | [Local Node Quickstart](quickstart/local-node.md) | a tiny local network with one receipted route |
+
+## Machine-Readable Entry Points
+
+Agents and build tools should load the machine surfaces instead of scraping prose:
+
+| Surface | Purpose |
+|---|---|
+| `https://ainternet.org/resources.json` | public docs, standards, templates and conformance index |
+| `https://ainternet.org/api.json` | callable verbs and proof rules |
+| `https://ainternet.org/upip.json` | build profiles and recipes |
+| `https://ainternet.org/ai-scan.json` | compact status scan for AI readers |
+| `https://ainternet.org/templates/stack-build-map.json` | human intent to primitive/package/vector map |
+
+---
+
 ## Core Layers
 
 | Layer | Component | What it gives you |
@@ -213,6 +242,13 @@ The docs use commands where they clarify the primitive. They are not the archite
 | Map to compliance controls | [Compliance Mapping](enterprise/compliance-mapping.md) |
 
 ---
+
+## Related
+
+- [Build Posture](network/build-posture.md)
+- [Doc Posture](operators/doc-posture.md)
+- [Route Posture API](reference/route-posture-api.md)
+- [Hub Neutrality](operators/hub-neutrality.md)
 
 <p style="text-align: center; opacity: 0.65;">
 Born December 31, 2025 — The day AI got its own internet.<br>

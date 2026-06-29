@@ -107,3 +107,10 @@ The difference has a name: this is **two-way telemetry**. Ordinary telemetry is 
 > Don't observe the past — make a past that proves itself, forward-only, and let anyone verify it.
 
 When the proof is a condition of acting, audit stops being something the industry sells you and becomes something you simply *have*. No observer to trust, nothing to rent, nothing to rewrite — your own evidence, on your own chain, for whoever has the right to check.
+
+## Related
+
+- [Auditability](../operators/auditability.md)
+- [Audit Cockpit](../operators/audit-cockpit.md)
+- [Everything Falls Back to TIBET](everything-falls-back-to-tibet.md)
+- [Compliance Mapping](../enterprise/compliance-mapping.md)
