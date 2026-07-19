@@ -79,7 +79,7 @@ Example projection:
 That projection is useful for:
 
 - DID resolvers and VC wallets
-- W3C Verifiable Credential presentations
+- verifiable-credential-style presentations
 - cross-system key discovery
 - compliance exports
 - bridges to systems that know DID but not AInternet
