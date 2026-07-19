@@ -132,6 +132,8 @@ Sandbox is the floor, always on. The dev escape is **explicit and loud**: `--no-
 
 The local/LAN actor is a *request-envelope* to a model — it asks, it does not get a shell. The external CLI actor is the heaviest: it brings a runtime supply chain and reaches out, so it carries the most and is gated the hardest. Same verb, `box bind`; different facts required to reach `0x4000`.
 
+The local-model, online-API and external-CLI shapes bind straight from the terminal. A loopback local-API actor — a bare `127.0.0.1` endpoint — is most easily provisioned through the **pre-boot console**, which shells the *very same* `box` verbs. Terminal and console are two surfaces over one set of operations, not two implementations: every button is a `box` command you could also type.
+
 A real local-model actor session, opened and sealed — note how the runtime **announces exactly what it is** before it does anything:
 
 ```text

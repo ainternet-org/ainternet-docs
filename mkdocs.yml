@@ -91,6 +91,7 @@ nav:
     - "JIS and DID Interop": learn/jis-did-interop.md
     - "Route Posture, Not a Trust Score": learn/route-posture.md
     - "Keys Never Leave Your Machine": learn/keys-never-leave.md
+    - "Dot Maps and Safe Floors": learn/dot-maps-and-safe-floors.md
     - "The Cat Principle: Dark by Default": learn/the-cat-principle.md
     - "Everything Falls Back to TIBET": learn/everything-falls-back-to-tibet.md
     - "Reasoning ≠ Execution": learn/reasoning-not-execution.md

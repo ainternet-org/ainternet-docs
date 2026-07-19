@@ -22,6 +22,8 @@ When an actor runs, it does not run "on the box." It runs inside a floor the box
 
 What isn't on the floor doesn't exist for the actor — not "forbidden," simply absent. There is nothing to escalate *to*, because the host isn't in view. (This is the same instinct as [The Cat Principle](the-cat-principle.md): the strongest protection is the door not being there.)
 
+You can watch this in the dot-folders. An actor's floor holds its own working area — a bound `codex` actor sees `.codex` — but the key material, `.humotica-keys`, is **not in its view at all**. Same disk, one folder present and one absent, decided by the runtime, not by trust. The box **routes** keys for the actor; it never hands them over. Keys stay human-owned and out of reach ([Keys Never Leave Your Machine](keys-never-leave.md)) — the box is a key-router, not a vault. [Dot Maps and Safe Floors](dot-maps-and-safe-floors.md) walks the whole visible/absent picture, folder by folder.
+
 ---
 
 ## Three enforcers, one below the model
