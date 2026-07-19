@@ -119,3 +119,8 @@ This is compliance-enabling. It is not a certification claim.
 - [Pol](../protocols/pol.md)
 - [EU AI Act Mapping](../enterprise/eu-ai-act.md)
 - [NIS2 Mapping](../enterprise/nis2.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/api.json` — audit, report and export verbs
+- `https://ainternet.org/resources.json` — evidence and compliance references

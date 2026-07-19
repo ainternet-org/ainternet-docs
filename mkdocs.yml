@@ -53,31 +53,21 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Learn:
-    - "Causality: Lamport → TIBET": learn/causality-lamport.md
-    - "Bind an AI, Runtime-Bound": learn/bind-an-ai.md
-    - "The Network Layer: How Your Agents Reach Each Other": learn/the-network-layer.md
-    - "The Suffix Tree: One Identity, Many Postures": learn/the-suffix-tree.md
-    - "Route Posture, Not a Trust Score": learn/route-posture.md
-    - "Keys Never Leave Your Machine": learn/keys-never-leave.md
-    - "The Cat Principle: Dark by Default": learn/the-cat-principle.md
-    - "Everything Falls Back to TIBET": learn/everything-falls-back-to-tibet.md
-    - "Operating in the Agentic Era: Audit as a Precondition": learn/operating-in-the-agentic-era.md
-    - "The Running Substrate": learn/the-running-substrate.md
-    - "The CAINT GPU Mailbox Lab": learn/caint-gpu-mailbox-lab.md
-    - "Models Are Mounted Artifacts": learn/models-are-mounted-artifacts.md
-    - "The Contract Is the System: Computo et Comprobo": learn/the-contract-is-the-system.md
-    - "Reaching a Raint: Identity, Not a Port": learn/reaching-a-raint.md
-    - ".aint Function Surfaces": learn/aint-function-surfaces.md
-  - Network:
-    - "Primitives": network/primitives.md
+  - Start Here:
+    - "Local Node": quickstart/local-node.md
+    - "AInternet-in-a-Box": builders/ainternet-in-a-box.md
+    - "AInternet-in-a-Box Terminal Path": builders/ainternet-in-a-box-terminal.md
+    - "Public Agent Sandbox": quickstart/sandbox.md
+    - "Production / Local First": quickstart/production.md
+  - Build Your Network:
     - "Build Your Network": network/build.md
     - "Build Posture": network/build-posture.md
+    - "Network Primitives": network/primitives.md
     - "Go Online": network/federation.md
   - Builders:
     - "Build on AInternet": builders/extending.md
-    - "Redstone RAINT Lab": builders/redstone-raint-lab.md
     - "Runtime Box Model": builders/runtime-box-model.md
+    - "Redstone RAINT Lab": builders/redstone-raint-lab.md
   - Operators:
     - "Hub Neutrality": operators/hub-neutrality.md
     - "Privacy Boundaries": operators/privacy-boundaries.md
@@ -87,16 +77,37 @@ nav:
     - "Audit Cockpit": operators/audit-cockpit.md
     - "Security Behavior": operators/security-behavior.md
     - "Tooling": operators/tooling.md
-  - Quickstart:
-    - "Local Node": quickstart/local-node.md
-    - "Public Agent Sandbox": quickstart/sandbox.md
-    - "Production / Local First": quickstart/production.md
   - Guides:
     - "Your First Agent": guides/first-agent.md
     - "Messaging (I-Poll)": guides/messaging.md
     - "Claiming a Domain": guides/claiming.md
     - "Permissions (Cortex)": guides/permissions.md
     - "MCP Integration": guides/mcp.md
+  - Learn:
+    - "Causality: Lamport → TIBET": learn/causality-lamport.md
+    - "Bind an AI, Runtime-Bound": learn/bind-an-ai.md
+    - "The Network Layer: How Your Agents Reach Each Other": learn/the-network-layer.md
+    - "The Suffix Tree: One Identity, Many Postures": learn/the-suffix-tree.md
+    - "JIS and DID Interop": learn/jis-did-interop.md
+    - "Route Posture, Not a Trust Score": learn/route-posture.md
+    - "Keys Never Leave Your Machine": learn/keys-never-leave.md
+    - "The Cat Principle: Dark by Default": learn/the-cat-principle.md
+    - "Everything Falls Back to TIBET": learn/everything-falls-back-to-tibet.md
+    - "Reasoning ≠ Execution": learn/reasoning-not-execution.md
+    - "Runtime Is The Firewall": learn/runtime-is-the-firewall.md
+    - "Actor Seal": learn/actor-seal.md
+    - "CRUST Runtime": learn/crust-runtime.md
+    - "What We Push Is What You Download": learn/what-we-push-is-what-you-download.md
+    - "Where Execution Governance Plugs In": learn/where-execution-governance-plugs-in.md
+    - "Operating in the Agentic Era: Audit as a Precondition": learn/operating-in-the-agentic-era.md
+    - "The Running Substrate": learn/the-running-substrate.md
+    - "A Computer Inside a Computer": learn/computer-inside-computer.md
+    - "Software in a Box: The PingPong Conservation Law": learn/pingpong-conservation-law.md
+    - "The CAINT GPU Mailbox Lab": learn/caint-gpu-mailbox-lab.md
+    - "Models Are Mounted Artifacts": learn/models-are-mounted-artifacts.md
+    - "The Contract Is the System: Computo et Comprobo": learn/the-contract-is-the-system.md
+    - "Reaching a Raint: Identity, Not a Port": learn/reaching-a-raint.md
+    - ".aint Function Surfaces": learn/aint-function-surfaces.md
   - Protocols:
     - "AINS (Name Service)": protocols/ains.md
     - "I-Poll (Messaging)": protocols/ipoll.md
@@ -113,6 +124,7 @@ nav:
     - "OSAPI Pair": reference/osapi.md
     - "Transfer Carriers": reference/transfer-carriers.md
     - "Semantic Surface Manifest": reference/semantic-surface-manifest.md
+    - "Surface Grant": reference/surface-grant.md
     - "Route Posture API": reference/route-posture-api.md
     - "Python SDK": reference/python-sdk.md
     - "HTTP Endpoints": reference/http-api.md

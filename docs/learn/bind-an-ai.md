@@ -100,3 +100,8 @@ One operator, one bound agent, one evidence node. That is a complete, safe agent
 - Comes after [Causality: Lamport → TIBET](causality-lamport.md) — the receipts in step 4/7 are that causal chain.
 - Leads into **Everything Falls Back to TIBET** — why the proof under all of this is always there.
 - Hands-on: the [`tibet-home-agent`](https://pypi.org/project/tibet-home-agent/) package and [Build Your Network](../network/build.md).
+
+## Machine-Readable
+
+- `https://ainternet.org/api.json` — actor binding, route and audit verbs
+- `https://ainternet.org/resources.json` — identity and runtime-binding references

@@ -34,9 +34,9 @@ Depth: [I-Poll protocol](../protocols/ipoll.md).
 A classic `ping` answers one question: *is something at this address?* It can't tell you **who**, **why**, or whether the answer is honest. In a named network that isn't enough. Try the old way and the network refuses — with a wink:
 
 ```
-$ tping 192.168.4.80
-76 bytes from 192.168.4.80: Payload: "Oh what a feeling, when we're dancing on the ceiling"
-76 bytes from 192.168.4.80: Payload: "Tell me how to sync the state, for I haven't got a clue"
+$ tping 192.0.2.80
+76 bytes from 192.0.2.80: Payload: "Oh what a feeling, when we're dancing on the ceiling"
+76 bytes from 192.0.2.80: Payload: "Tell me how to sync the state, for I haven't got a clue"
 Warning: Legacy ping rejected by TIBET-verify.
 ```
 
@@ -86,3 +86,16 @@ An MCP server that lets an AI resolve `.aint` names, verify identities, and send
 > Find by name, talk peer-to-peer, verify before you trust, route only what's proven — and stay dark to everyone else.
 
 No middleman holds the conversation, no address is trusted on faith, and the recon scanner is told nothing at all. That's a network where reaching someone is a right you hold, not a service you rent.
+
+## Machine-Readable
+
+- `https://ainternet.org/resources.json` — network layer and protocol references
+- `https://ainternet.org/api.json` — AINS, MUX and I-Poll verbs
+
+## Related
+
+- [Network Primitives](../network/primitives.md)
+- [Build Your Network](../network/build.md)
+- [AINS](../protocols/ains.md)
+- [MUX](../protocols/mux.md)
+- [I-Poll](../protocols/ipoll.md)

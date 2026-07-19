@@ -145,6 +145,7 @@ Fail-closed cases: stale nonce, wrong key, replayed proof, malformed namespace, 
 
 ## Related
 
+- [JIS and DID Interop](../learn/jis-did-interop.md)
 - [AINS Name Service](./ains.md)
 - [SNAFT Bilateral Consent](./snaft.md)
 - [Claiming a Domain](../guides/claiming.md)

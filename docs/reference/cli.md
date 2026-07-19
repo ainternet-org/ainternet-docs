@@ -147,10 +147,10 @@ List available verification channels.
 ```bash
 ainternet claim-channels
 
-# Channel     Trust Boost  Instructions
-# github      +0.10        Create public gist with verify text
-# dns         +0.15        Add TXT record _ainternet to your domain
-# https       +0.15        Host verify text at /.well-known/ainternet.txt
+# Channel     Evidence             Instructions
+# github      account-control      Create public gist with verify text
+# dns         domain-control       Add TXT record _ainternet to your domain
+# https       web-origin-control   Host verify text at /.well-known/ainternet.txt
 ```
 
 ## Messaging (I-Poll)

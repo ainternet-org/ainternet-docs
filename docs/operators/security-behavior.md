@@ -121,3 +121,8 @@ proven and related -> scoped status or route
 - [Airlock](../protocols/airlock.md)
 - [MUX](../protocols/mux.md)
 - [TIBET](../protocols/tibet.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/api.json` — security gate, policy and route verbs
+- `https://ainternet.org/resources.json` — security behavior and conformance references

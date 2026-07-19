@@ -109,3 +109,8 @@ That's not a convenience choice — it's the floor the whole stack stands on. An
 - [The Cat Principle](the-cat-principle.md)
 - [JIS](../protocols/jis.md)
 - [Local Node Quickstart](../quickstart/local-node.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/api.json` — challenge, claim and key-rotation verbs
+- `https://ainternet.org/resources.json` — custody and signing ceremony references

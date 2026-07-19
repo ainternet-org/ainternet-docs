@@ -114,3 +114,8 @@ When the proof is a condition of acting, audit stops being something the industr
 - [Audit Cockpit](../operators/audit-cockpit.md)
 - [Everything Falls Back to TIBET](everything-falls-back-to-tibet.md)
 - [Compliance Mapping](../enterprise/compliance-mapping.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/resources.json` — audit, compliance and evidence references
+- `https://ainternet.org/api.json` — audit/export/report verbs

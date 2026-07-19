@@ -105,3 +105,8 @@ You did not reconstruct this from five systems' logs and hope they line up. It i
 - Hands-on: [Build Your Network](../network/build.md) — wire an evidence node and watch the fabric fill.
 
 [^doppie]: The flood-absorbing silence has a co-author: **Doppie**, the household cat, who once strolled across the keyboard mid-incident and backspace-panicked the kernel flat. If my own cat can take me down from the inside, the fix has to catch a flood from *anywhere* — and `0x0000` does. Thanks, Doppie. 🐈
+
+## Machine-Readable
+
+- `https://ainternet.org/resources.json` — TIBET, carrier and evidence references
+- `https://ainternet.org/api.json` — receipt verification and export verbs

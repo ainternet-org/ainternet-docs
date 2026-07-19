@@ -107,3 +107,8 @@ You don't get more powerful by changing your hat — the hat only ever shows a r
 - [AInternet Function Surfaces](aint-function-surfaces.md)
 - [Route Posture](route-posture.md)
 - [JIS](../protocols/jis.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/api.json` — actor, posture and route verbs
+- `https://ainternet.org/resources.json` — suffix and posture references

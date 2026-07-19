@@ -54,3 +54,8 @@ gguf2oom             = airlock (sniff → verify → seal)
 - [Keys Never Leave Your Machine](keys-never-leave.md)
 - [Airlock](../protocols/airlock.md)
 - [Transfer Carriers](../reference/transfer-carriers.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/resources.json` — model artifact and carrier references
+- `https://ainternet.org/templates/stack-build-map.json` — map `.oom`, TBZ and Airlock work to packages

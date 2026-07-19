@@ -135,3 +135,8 @@ This preserves auditability without forcing every network to become permanent.
 - [Self-hosted Setup](../enterprise/self-hosted.md)
 - [AINS](../protocols/ains.md)
 - [MUX](../protocols/mux.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/api.json` — AINS, MUX and route verbs
+- `https://ainternet.org/resources.json` — hub, federation and self-hosted references

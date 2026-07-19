@@ -52,3 +52,8 @@ The contract of 2026 cannot be a document on top of the system. **It must be the
 - [Operating in the Agentic Era](operating-in-the-agentic-era.md)
 - [The Running Substrate](the-running-substrate.md)
 - [TIBET](../protocols/tibet.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/resources.json` — contract, audit and TIBET references
+- `https://ainternet.org/api.json` — route, receipt and audit verbs

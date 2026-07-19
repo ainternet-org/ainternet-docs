@@ -99,3 +99,8 @@ Nothing here needs a slogan. It's a substrate: small kernels that prove who and 
 - [Transfer Carriers](../reference/transfer-carriers.md)
 - [Runtime Box Model](../builders/runtime-box-model.md)
 - [The CAINT GPU Mailbox Lab](caint-gpu-mailbox-lab.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/resources.json` — package, carrier and substrate references
+- `https://ainternet.org/templates/stack-build-map.json` — package-to-primitive map

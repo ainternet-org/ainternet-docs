@@ -10,6 +10,8 @@ identity -> consent -> route -> workload -> evidence -> destroy
 
 That is the Redstone lesson.
 
+For the learning intuition behind this pattern, read [A Computer Inside A Computer](../learn/computer-inside-computer.md): small boxes make routes reproducible, failures shareable and authority visible.
+
 ## Why Boxes Exist
 
 An AInternet network is not only names and messages. Actors eventually need places to do work:
@@ -39,6 +41,10 @@ The box gives that work a boundary. The AInternet substrate gives it identity, r
 | Container box | rootless container | later compatibility tier, weaker isolation, same control plane |
 
 Build the friendly node first. A hackbox is the same box model plus adversary, scenario and flag gate. That makes the arena a strict specialization, not a separate substrate.
+
+For the practical builder path, start with [AInternet-in-a-Box](ainternet-in-a-box.md).
+For the command mirror underneath the TUI, use
+[AInternet-in-a-Box Terminal Path](ainternet-in-a-box-terminal.md).
 
 ## The Invariant
 

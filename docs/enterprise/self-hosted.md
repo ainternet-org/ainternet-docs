@@ -118,7 +118,7 @@ server {
 version: "3.9"
 services:
   hub:
-    image: ghcr.io/jaspertvdm/ainternet-hub:0.6.0
+    image: ghcr.io/YOUR-ORG/ainternet-hub:0.6.0   # your registry, or build from source
     ports:
       - "8000:8000"
     volumes:

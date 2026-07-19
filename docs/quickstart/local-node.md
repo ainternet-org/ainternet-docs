@@ -1,40 +1,107 @@
-# Local Node Quickstart
+# Build Your First AInternet Node
 
-Build a local AInternet before you federate. This path creates a tiny network with three actors:
+A follow-along path, not a catalog. You start with nothing; you end with a
+local node you can ping. Each step has a copy-paste block and a **You now have**
+checkpoint, so you always know where you are.
+
+This is the smallest coherent loop:
 
 ```text
-operator.local -> agent.local -> audit.local
+identity -> node up -> self-ping
 ```
 
-The goal is not to join a public service. The goal is to prove that identity, policy, routing and receipts work on your own machine first.
+**Payoff:** your first local ping arrives. The function is familiar; the new
+part is that identity, route posture and evidence are visible while it happens.
 
-!!! note "Command shape"
-    Some commands below define the intended AInternet CLI shape. If your installed version does not yet expose the exact command, use this page as the operational target and follow the linked primitives.
+**Use this as a reference:** when you later forget the exact order for "make a
+local actor, bring up the node, ping it, check evidence", this page is the
+repeatable path.
 
-!!! tip "When is a step done?"
-    A step is not done when the package installs. A step is done when its build posture is proven: identity, relation, policy, route and TIBET receipt each have evidence. Keep [Build Posture](../network/build-posture.md) open next to this quickstart.
+**AI context:** one link to this page should be enough for an assistant to know
+the goal, commands, checkpoints, failure behavior and next docs.
 
-## 1. Install The Local Node Profile
+Proving evidence, holding or rejecting work, adding agents, and federating with
+another network are separate handbooks in this same shape.
+
+!!! warning "Before you start"
+    **Placeholders.** Anything in `<angle-brackets>` or ending in `.example` is
+    yours to replace, for example `<node-name>` or `peer.example.aint`. Nothing
+    with a placeholder is meant to run unchanged.
+
+    **Verify the verb.** Some commands below describe the intended CLI shape.
+    Exact verb names and flags can differ by installed version. Lines marked
+    `verify with --help` should be checked once against your install.
+
+## Step 0: Prerequisites
+
+What this does: confirms you have the runtime the packages need.
 
 ```bash
+python3 --version      # 3.10+ expected
+pip --version
+```
+
+**You now have:** a Python toolchain ready to install into.
+
+## Step 1: Install The Substrate
+
+What this does: puts the smallest identity and provenance floor on the machine.
+
+`tibet[zero-state]` is the T-1 substrate: identity, provenance, genesis and
+causal time. `tibet[network]` adds the lane tools you will self-ping with.
+
+```bash
+# identity/provenance floor: tibet-core, jis-core, genesis, causal time
+pip install -U "tibet[zero-state]"
+
+# local lane tools: ping, overlay, MUX
+pip install -U "tibet[network]"
+
+# node/actor surface: init, actors, doctor
 pip install -U "ainternet[node]"
 ```
 
-This profile should include the local identity, receipt, route, continuity and transfer pieces needed to run a private node.
+**You now have:** the software on the machine.
 
-Equivalent substrate shape:
+One distinction matters:
 
 ```text
-tibet[zero-state] + tibet[network] + tibet[continuity]
+installed != running
 ```
 
-## 2. Initialize Local Mode
+Nothing is up yet. You have installed the floor, not proven a route.
+
+## Step 2: Become An Actor
+
+What this does: gives you a name, so others can route to you, and a key, so you
+can prove it is you. This is the moment you exist as an AInternet actor.
 
 ```bash
+# initialize a local-only node
 ainternet node init --local
+
+# create your local actor; replace <node-name>
+ainternet actor create <node-name>.example.aint --role operator
 ```
 
-Expected shape on disk:
+If your installed CLI exposes a different actor verb, check:
+
+```bash
+ainternet actor --help
+```
+
+**You now have:** an actor: a `.aint` name bound to a JIS key.
+
+What just happened:
+
+```text
+name routes
+key proves
+```
+
+Your private key stays on this machine and never leaves it.
+
+Expected local shape:
 
 ```text
 ~/.ainternet/
@@ -45,122 +112,173 @@ Expected shape on disk:
   routes/
 ```
 
-Private keys stay under `keys/` and should not be committed.
+The actor record is yours to inspect and complete:
 
-## 3. Create Three Actors
-
-```bash
-ainternet actor create operator.local --role operator
-ainternet actor create agent.local --role agent
-ainternet actor create audit.local --role evidence
+```text
+~/.ainternet/actors/<node-name>.example.aint.yaml
 ```
 
-Each actor should get:
+It should carry identity, endpoints, receipt roots, and later succession or
+tombstone fields. Do not commit private keys.
 
-- a JIS identity;
-- a public key in the local registry;
-- a local receipt chain root;
-- no public `.aint` federation by default.
+## Step 3: Bring The Node Up Locally
 
-## 4. Check The Node
+What this does: checks whether the local planes can carry a route.
 
 ```bash
 ainternet node doctor
 ```
 
-The doctor should check:
+If your installed build uses a different health command, check:
+
+```bash
+ainternet node --help
+```
+
+The doctor should check at least:
 
 ```text
-identity plane: JIS available
-evidence plane: TIBET available
-local registry: present
-receipt store: writable
-MUX: local route gate available
-TIBET-zip/TBZ: carrier tools available
+identity plane      JIS available
+evidence plane      TIBET available
+local registry      present
+receipt store       writable
+MUX                 local route gate available
+carrier tools       TIBET-zip / TBZ available
 ```
 
-If identity or evidence is missing, production should fail closed.
+**You now have:** a node that can prove its own local planes.
 
-## 5. Probe A Local Actor
-
-```bash
-ainternet ping agent.local
-```
-
-Read the result carefully:
+The rule:
 
 ```text
-reachable != allowed
-alive != consented
-route exists != action approved
+red plane -> fail closed
 ```
 
-The probe should prove reachability and route shape, not blanket permission.
+If doctor is unhappy, stop here and fix it. A node that cannot prove its own
+health should not carry routes.
 
-## 6. Explain A Route
+## Step 4: Close The Smallest Loop
+
+What this does: pings your own node over its local lane. This closes the loop:
+identity exists, the node is up, and the lane carries on your machine without
+depending on the public hub.
+
+First find the local MUX surface your node uses:
 
 ```bash
-ainternet route explain agent.local audit.local
+ainternet node doctor
 ```
 
-Expected result shape:
+Then self-ping it:
+
+```bash
+# replace <port> with the local MUX port reported by your node
+tibet-ping stack --mux http://127.0.0.1:<port>
+```
+
+Later, the peer form targets another actor:
+
+```bash
+tibet-ping peer.example.aint
+```
+
+**You now have:** a running node that answers its own ping. The smallest loop is
+closed.
+
+!!! note "Doctrine L0"
+    A successful ping proves **reachability, not authority**.
+
+    You have shown that the lane carries. You have not shown that you are
+    allowed to act across it. Never escalate "I can reach it" into "I may act on
+    it." That separation is the point of the floor you just built.
+
+## Step 5: Read The First Posture
+
+What this does: shows where the route stands. A route posture is not a rating of
+the actor; it is a coordinate into what this route has proven.
+
+```bash
+ainternet route explain <node-name>.example.aint <node-name>.example.aint
+```
+
+If that exact verb is not present yet, use the available route or doctor output
+and compare it to the expected shape:
 
 ```text
-resolve: agent.local -> JIS key
-challenge: fresh proof ok
-relation: local known actor
-policy: PUSH allowed
-route: local MUX route available
-posture: #...
+resolve       actor name resolves to a JIS key
+challenge     fresh proof can be requested
+relation      local self-relation or parent relation exists
+policy        local action is allowed or held
+route         local MUX lane exists
+evidence      TIBET receipt path is available
+posture       #... or #00000
 ```
 
-If any required part is missing, the route should hold or return `0x0000`.
+**You now have:** a map marker. You can see whether the node is dark, holding, or
+admitted for this smallest action.
 
-## 7. Send One Message
+## Step 6: Keep One Receipt
+
+What this does: checks that the node can leave evidence for what it just did.
 
 ```bash
-ainternet send agent.local audit.local --type PUSH --content "hello"
+ainternet audit trail --actor <node-name>.example.aint
 ```
 
-The result should include:
+Expected shape:
 
 ```text
-message id
-route posture
-TIBET receipt id
-delivery state
+actor
+intent or probe
+route or denial
+posture
+receipt id
+causal position
 ```
 
-For sensitive content, send a sealed carrier instead of plaintext:
+**You now have:** the start of an audit trail. The ping is no longer only an
+event you saw in the terminal; it is something you can reconstruct.
 
-```bash
-ainternet send agent.local audit.local --file report.tibet.zip
+## Where This Leaves You
+
+You went from an empty machine to:
+
+```text
+an identity
+a local node
+a proven lane to yourself
+the first audit surface
 ```
 
-## 8. Inspect The Trail
+That is the bare-necessity floor. Everything else builds on it.
 
-```bash
-ainternet audit trail --actor agent.local
-```
+## Next Handbooks
 
-You should be able to reconstruct:
+Each next capability should follow this same shape: command, checkpoint, proof.
 
-- who acted;
-- what was intended;
-- which route opened;
-- which policy applied;
-- what was sent;
-- what receipt linked the result.
+| Next capability | What you prove |
+|---|---|
+| Prove what happened | read and verify the TIBET evidence chain |
+| Hold or reject unknown work | SNAFT, Cortex and Airlock fail closed |
+| Let an agent operate it | I-Poll or MCP surfaces under your `.aint` identity |
+| Add another actor | local relation and MUX route between two names |
+| Federate later | outside reachability remains subordinate to local policy |
 
-## 9. Federate Later
+If you want the intuition behind the runtime-box pattern before going deeper,
+read [A Computer Inside A Computer](../learn/computer-inside-computer.md).
 
-Only after the local loop works should you claim or federate a public `.aint`:
+If you want the same local loop in a bounded microVM first, use
+[AInternet-in-a-Box](../builders/ainternet-in-a-box.md). The box path is the
+same state machine with an extra clean boundary around it.
 
-```bash
-ainternet claim myagent
-```
+Read in this order when you are ready:
 
-Federation increases reachability. It does not replace local policy, consent or audit.
+1. [Build Your Network](../network/build.md)
+2. [Build Posture](../network/build-posture.md)
+3. [Network Primitives](../network/primitives.md)
+4. [Messaging](../guides/messaging.md)
+5. [Permissions](../guides/permissions.md)
+6. [Go Online](../network/federation.md)
 
 ## Machine-Readable Companion
 
@@ -177,7 +295,8 @@ Pin local copies when running offline.
 ## Related
 
 - [Build Your Network](../network/build.md)
+- [AInternet-in-a-Box](../builders/ainternet-in-a-box.md)
 - [Build Posture](../network/build-posture.md)
+- [Route Posture](../learn/route-posture.md)
 - [Privacy Boundaries](../operators/privacy-boundaries.md)
-- [OSAPI Pair](../reference/osapi.md)
 - [Transfer Carriers](../reference/transfer-carriers.md)

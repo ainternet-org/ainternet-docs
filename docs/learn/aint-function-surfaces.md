@@ -180,3 +180,8 @@ An `.aint` function is not just a tool endpoint. It is a callable surface whose 
 - [Reaching a Raint](reaching-a-raint.md)
 - [MUX](../protocols/mux.md)
 - [Route Posture API](../reference/route-posture-api.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/api.json` — callable surface verbs and proof rules
+- `https://ainternet.org/resources.json` — surface and protocol references

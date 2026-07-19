@@ -147,3 +147,8 @@ In TIBET terms: `e2` is an *intent* receipt signed by `agent.local`; `e4` is a *
 - [TIBET (Provenance)](../protocols/tibet.md) — the protocol page.
 - [Network Primitives](../network/primitives.md) — where TIBET sits in the stack.
 - [Causal Action Receipts](https://ainternet.org/causal-action-receipts.html) — the `Eₙ` doctrine.
+
+## Machine-Readable
+
+- `https://ainternet.org/resources.json` — causal-time and TIBET references
+- `https://ainternet.org/api.json` — receipt and audit verbs

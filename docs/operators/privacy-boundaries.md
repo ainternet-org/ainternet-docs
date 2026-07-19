@@ -101,3 +101,8 @@ The safe answer for unknown or unproven routes is silence: `0x0000`.
 - [AINS](../protocols/ains.md)
 - [MUX](../protocols/mux.md)
 - [SNAFT](../protocols/snaft.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/api.json` — privacy, consent and route verbs
+- `https://ainternet.org/resources.json` — boundary and carrier references

@@ -146,3 +146,8 @@ attestation is something you can re-check yourself.
 - [Build Posture](../network/build-posture.md)
 - [MUX](../protocols/mux.md)
 - [Machine Posture](../operators/machine-posture.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/api.json` — route explain, route audit and posture response shapes
+- `https://ainternet.org/resources.json` — route-posture references and vectors

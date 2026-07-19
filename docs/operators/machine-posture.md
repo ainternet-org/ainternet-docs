@@ -108,3 +108,8 @@ can carry:
 - [Operator Tooling](tooling.md)
 - [The Running Substrate](../learn/the-running-substrate.md)
 - [Route Posture API](../reference/route-posture-api.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/api.json` — machine posture, route explain and audit verbs
+- `https://ainternet.org/resources.json` — hardware and conformance references

@@ -55,40 +55,49 @@ AInternet answers that by making every important layer inspectable:
 
 ---
 
-## Learn It in the Right Order
+## Build It in the Right Order
 
-The stack is easiest to learn from the bottom up:
+The docs are easiest to use when you build the smallest loop first, then deepen
+the model:
 
 ```text
-JIS identity
-  -> TIBET causal receipts
-  -> AINS name resolution
-  -> MUX route gates
-  -> UPIP process continuity
-  -> AInternet mesh
+local identity
+  -> node up
+  -> self-ping
+  -> route posture
+  -> evidence
+  -> another actor
+  -> federation, only when useful
 ```
 
-This order matters. A message without identity is just traffic. A route without policy is just reachability. A log without TIBET is only a claim after the fact.
+This order matters. A reachable service is not authority. A route without policy
+is just reachability. A log without TIBET is only a claim after the fact.
 
 !!! tip "Prefer to learn by building?"
     These docs are the map. For the *walks* — standalone, hands-on courses you follow start to finish — see [**How-to & Courses**](https://ainternet.org/how-to.html): connect your own network, walk the handshake, take the journey. You don't have to read the whole tree before you build something.
 
 ---
 
-## Start Here: Model, Build, Prove
+## Start Here: Build, Prove, Learn
 
 Use the docs in this order when you are new:
 
 ```text
-learn the model -> build local -> prove the posture
+build your node -> prove the loop -> add actors -> connect networks later
 ```
 
 | Step | Page | What you should have after it |
 |---|---|---|
-| 1 | [The Network Layer](learn/the-network-layer.md) | the mental model: actors, routes, receipts |
-| 2 | [Build Your Network](network/build.md) | the local architecture you are assembling |
-| 3 | [Build Posture](network/build-posture.md) | the proof ladder for each build step |
-| 4 | [Local Node Quickstart](quickstart/local-node.md) | a tiny local network with one receipted route |
+| 1 | [Local Node Quickstart](quickstart/local-node.md) | identity, node up, self-ping |
+| 2 | [AInternet-in-a-Box](builders/ainternet-in-a-box.md) | the same loop inside a clean bounded box |
+| 3 | [Build Your Network](network/build.md) | your local actors, registry, policy and receipts |
+| 4 | [Build Posture](network/build-posture.md) | the proof ladder for each build step |
+| 5 | [Go Online](network/federation.md) | federation only after your local loop is green |
+
+If you land here wanting "the concept", read the home page and then
+[Network Primitives](network/primitives.md). If you land here wanting to build,
+start with the local node. A network is something you grow from a proven node,
+not the first thing you join.
 
 ## Machine-Readable Entry Points
 
@@ -131,7 +140,7 @@ Agents and build tools should load the machine surfaces instead of scraping pros
 
     ---
 
-    Start from first principles: identity, causal receipts, known actors, local routing, then federation.
+    First principles: identity, causal receipts, known actors, local routing, then federation.
 
     [:octicons-arrow-right-24: Network primitives](network/primitives.md)
 
@@ -139,9 +148,17 @@ Agents and build tools should load the machine surfaces instead of scraping pros
 
     ---
 
-    Set up a local/internal zero-trust network before touching the public hub.
+    Follow the smallest loop first: identity, node up, self-ping.
 
-    [:octicons-arrow-right-24: Build your network](network/build.md)
+    [:octicons-arrow-right-24: Local node quickstart](quickstart/local-node.md)
+
+-   :material-cube-outline:{ .lg .middle } **Build In A Box**
+
+    ---
+
+    Run the same local loop inside a clean bounded microVM before exposing anything outside.
+
+    [:octicons-arrow-right-24: AInternet-in-a-Box](builders/ainternet-in-a-box.md)
 
 -   :material-shield-check:{ .lg .middle } **Operate Safely**
 
@@ -227,8 +244,9 @@ The docs use commands where they clarify the primitive. They are not the archite
 
 | If you want to... | Read |
 |---|---|
-| Learn the primitives in order | [Network primitives](network/primitives.md) |
+| Build the smallest local loop | [Local Node Quickstart](quickstart/local-node.md) |
 | Build a local/internal network | [Build your network](network/build.md) |
+| Learn the primitives in order | [Network primitives](network/primitives.md) |
 | Understand identity | [JIS](protocols/jis.md) |
 | Understand auditability | [TIBET](protocols/tibet.md) |
 | Add outside `.aint` names | [AINS](protocols/ains.md) |

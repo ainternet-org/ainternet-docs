@@ -130,3 +130,8 @@ This route is allowed because the current route posture satisfies policy and the
 - [Machine Posture](machine-posture.md)
 - [Route Posture](../learn/route-posture.md)
 - [Local Node Quickstart](../quickstart/local-node.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/resources.json` — docs, templates and conformance index
+- `https://ainternet.org/templates/stack-build-map.json` — build-doc mapping support

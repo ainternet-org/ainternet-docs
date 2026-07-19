@@ -109,3 +109,8 @@ That is the point. Audit is not a decorative report. It is how a local actor kno
 - [Route Posture](../learn/route-posture.md)
 - [Semantic Surface Manifest](../reference/semantic-surface-manifest.md)
 - [Transfer Carriers](../reference/transfer-carriers.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/api.json` — audit, route and carrier inspection verbs
+- `https://ainternet.org/resources.json` — cockpit, SSM and evidence references

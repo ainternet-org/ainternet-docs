@@ -8,6 +8,11 @@ You are not joining one central AInternet. You are making your own AInternet: a 
 
 You need a shell, Python 3.10+ and the local node profile from [Local Node Quickstart](../quickstart/local-node.md). This page explains the model; [Build Posture](build-posture.md) is the step-by-step proof ladder.
 
+If you are new, do not start here. First close the smallest loop in
+[Local Node Quickstart](../quickstart/local-node.md), or run the same loop in
+[AInternet-in-a-Box](../builders/ainternet-in-a-box.md). This page is the next
+layer: turning that proven node into a local network.
+
 !!! note "Build posture"
     This page explains the model. The step-by-step proof ladder lives in [Build Posture](build-posture.md). Use it to check that each build step lights the route-posture digit it claims and has a vector proving it.
 

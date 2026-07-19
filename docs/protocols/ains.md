@@ -97,6 +97,22 @@ https://brein.jaspervandemeent.nl/api/ains/
 
 Self-hosted deployments maintain their own registry and can peer with the public hub. See [Self-Hosted Setup](../enterprise/self-hosted.md).
 
+## Discovery Dark Mode
+
+Resolution answers *addressability* — how to reach an actor who wants to be reachable — without becoming an **enumeration oracle** that lets anyone map who exists, who is online, or who left. AINS is a name service, not a public directory.
+
+- An **unknown / unrelated caller** gets no rich status. Not "offline," not "revoked," not "moved" — those distinctions are exactly what an attacker enumerates. To an unrelated caller they collapse into one answer: no route.
+- A single **canary**, `handshake.aint`, is deliberately probeable — a public liveness beacon, so anyone can confirm the network answers at all without revealing a single real actor.
+- **Real actor resolve and liveness are relation-gated.** Rich status — that an actor exists, is online, its current posture — is returned only to a caller in a proven relation at sufficient posture.
+- Internally the registry distinguishes not-found / offline / revoked / moved; externally it must not leak the difference. `0x4000` (resolved, rich) is returned only after relation and posture are met; otherwise the caller sees `0x0000:<reason>`, and to an unrelated caller `<reason>` is uniformly `no-route` — never the enumerable truth.
+
+```text
+related + posture met      →  0x4000   resolve + liveness + posture
+unrelated / below posture  →  0x0000:no-route   (identical for absent, offline, revoked, moved)
+```
+
+This is [The Cat Principle](../learn/the-cat-principle.md) applied to the name service: presence itself is privacy. The network is reachable to those who can prove a relation, and simply *isn't there* to everyone else — including anyone trying to learn who to attack.
+
 ## Conformance
 
 Docs explain the protocol. Vectors decide whether another implementation resolves names and identity records the same way.

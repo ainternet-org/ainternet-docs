@@ -77,3 +77,8 @@ Don't take the numbers from us — run them on your own cards and compare. That'
 - [Models Are Mounted Artifacts](models-are-mounted-artifacts.md)
 - [Machine Posture](../operators/machine-posture.md)
 - [Route Posture API](../reference/route-posture-api.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/resources.json` — lab references and conformance pointers
+- `https://ainternet.org/templates/stack-build-map.json` — map GPU mailbox work to packages and vectors

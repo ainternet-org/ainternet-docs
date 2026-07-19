@@ -169,7 +169,7 @@ The denial reason shown by attach is control-plane feedback to the authenticated
 Before a grant:
 
 ```bash
-curl --noproxy "*" -sS -m 2 http://172.16.0.2:8080/resolve/pty.aint
+curl --noproxy "*" -sS -m 2 http://198.51.100.2:8080/resolve/pty.aint   # your raint's lane address — yours will differ
 ```
 
 Expected wire behavior:
@@ -225,7 +225,7 @@ audit
 Or from the carrier during a lab run:
 
 ```bash
-curl --noproxy "*" -sS http://172.16.0.2:8080/audit
+curl --noproxy "*" -sS http://198.51.100.2:8080/audit   # your raint's lane address — yours will differ
 ```
 
 Useful phases to look for:

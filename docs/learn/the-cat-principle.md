@@ -98,3 +98,8 @@ The attacker's whole method is to learn your shape by poking it. Dark-by-default
 - [Keys Never Leave Your Machine](keys-never-leave.md)
 - [Security Behavior](../operators/security-behavior.md)
 - [Route Posture](route-posture.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/api.json` — MUX route and dark-route verbs
+- `https://ainternet.org/resources.json` — L0, MUX and security references

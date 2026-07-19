@@ -160,3 +160,9 @@ second implementation passing = real interop signal
 - [Security Behavior](security-behavior.md)
 - [Build Your Network](../network/build.md)
 - [CLI Reference](../reference/cli.md)
+
+## Machine-Readable
+
+- `https://ainternet.org/resources.json` — tool, package and conformance index
+- `https://ainternet.org/api.json` — callable operator verbs
+- `https://ainternet.org/upip.json` — runnable profiles and recipes
