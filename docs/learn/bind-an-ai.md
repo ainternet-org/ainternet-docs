@@ -95,6 +95,56 @@ One operator, one bound agent, one evidence node. That is a complete, safe agent
 
 ---
 
+## 7. The layered bind, in the box
+
+The four wires above are the *why*. In AInternet-in-a-Box the *how* is a short, staged sequence — and it is staged on purpose: **boot is a phase boundary**, so there is no one-line `&&` chain that carries an actor from nothing to bound. You cross each layer deliberately, and each leaves a receipt.
+
+```text
+1. enroll        the box has a human/root identity, and the actor gets its own .aint
+2. provision     posture floor is set; sandbox is the DEFAULT (not a flag you remember)
+3. supply        for a model actor: its runtime is prefetched / staged / switched in
+4. grant         only if the actor needs to reach out: open egress for the declared .aint
+5. bind          the actor is admitted to act — a verdict, not a promise
+6. seal          the session closes to a durable receipt (see Actor Seal)
+```
+
+A representative walk for an external CLI actor that needs to reach a provider — each step its own command, checked before the next:
+
+```sh
+box provision status --json         # where am I: posture, what's staged, what carries
+box provision set-snaft NORMAL      # raise the posture floor, deliberately
+box grant egress codex.aint         # open egress for the DECLARED actor (.aint — not .waint)
+box bind codex                      # admit it → 0x4000, or 0x0000:<reason> if a fact is missing
+```
+
+Sandbox is the floor, always on. The dev escape is **explicit and loud**: `--no-sandbox` is receipted, never a habit and never remembered as a normal flag. If `box bind` returns `0x0000:egress-not-permitted`, the box is telling you a *fact* is missing (posture or grant), not asking you to try harder.
+
+## 8. Four actor shapes, four bindings
+
+"Bind an AI" is not one thing — the binding matches what the actor actually is. Locality matters: **loopback** (`127.0.0.1`) is not the same as a **private LAN host** (`192.168.x.x`), which is not the same as an **external provider** (`api.openai.com`).
+
+| Actor shape | Reaches | Runtime binding |
+|---|---|---|
+| **Local model** | loopback Ollama / local API (`127.0.0.1`) | request-envelope only — no shell, no filesystem, no egress by default; `LOCAL_ONLY` carries it |
+| **LAN model** | a named host on your private network (`192.168.x.x`) | needs explicit posture + grant + relation; loopback rules do **not** silently extend to the LAN |
+| **Online API** | one keyed provider endpoint (`api.openai.com`) | a `keyref` + granted egress; the key is referenced, never pasted into the box |
+| **External CLI** | a bound PTY + provider egress | runtime supply chain staged, egress granted, then bound; fails closed until both are true |
+
+The local/LAN actor is a *request-envelope* to a model — it asks, it does not get a shell. The external CLI actor is the heaviest: it brings a runtime supply chain and reaches out, so it carries the most and is gated the hardest. Same verb, `box bind`; different facts required to reach `0x4000`.
+
+## Try it
+
+Watch a bind fail closed, then open it deliberately — the whole safety model in four lines:
+
+```sh
+box bind codex                   # 0x0000:egress-not-permitted  (a fact is missing)
+box provision set-snaft NORMAL   # raise the posture floor
+box grant egress codex.aint      # open egress for the declared actor
+box bind codex                   # 0x4000 — same actor, changed facts
+```
+
+Machine surface: [`ainternet.org/api.json`](https://ainternet.org/api.json) — actor binding, grant and route verbs an AI can call directly.
+
 ## Where this sits
 
 - Comes after [Causality: Lamport → TIBET](causality-lamport.md) — the receipts in step 4/7 are that causal chain.

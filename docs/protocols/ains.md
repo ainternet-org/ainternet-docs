@@ -101,8 +101,10 @@ Self-hosted deployments maintain their own registry and can peer with the public
 
 Resolution answers *addressability* — how to reach an actor who wants to be reachable — without becoming an **enumeration oracle** that lets anyone map who exists, who is online, or who left. AINS is a name service, not a public directory.
 
+**Two surfaces, not one.** The public `resolve` / `list` / `search` examples above return only **opt-in, self-declared static records** — a name and the references its owner *chose* to publish. They carry no liveness, no current posture, and never surface private actors. Everything live and rich — that an actor exists *right now*, its posture, whether it is reachable — is the **relation-gated** surface, and that is where the rules below apply.
+
 - An **unknown / unrelated caller** gets no rich status. Not "offline," not "revoked," not "moved" — those distinctions are exactly what an attacker enumerates. To an unrelated caller they collapse into one answer: no route.
-- A single **canary**, `handshake.aint`, is deliberately probeable — a public liveness beacon, so anyone can confirm the network answers at all without revealing a single real actor.
+- A single **canary**, `handshake.aint`, is deliberately probeable — it confirms the discovery **surface** is answering at all, not that any real actor is present. A liveness beacon for the network, revealing no one.
 - **Real actor resolve and liveness are relation-gated.** Rich status — that an actor exists, is online, its current posture — is returned only to a caller in a proven relation at sufficient posture.
 - Internally the registry distinguishes not-found / offline / revoked / moved; externally it must not leak the difference. `0x4000` (resolved, rich) is returned only after relation and posture are met; otherwise the caller sees `0x0000:<reason>`, and to an unrelated caller `<reason>` is uniformly `no-route` — never the enumerable truth.
 

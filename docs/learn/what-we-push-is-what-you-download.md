@@ -24,7 +24,7 @@ It does **not** ask you to trust our infrastructure, our CI, or our word. If a s
 
 ## 2. Build — a floor that builds the same way twice
 
-The runtime is built on a **static, `musl` floor** (see [CRUST Runtime](crust-runtime.md)): no ambient system libraries drifting in, no host-specific paths baked into the output. The same inputs produce the same bytes. Reproducibility is the precondition for the next step to mean anything — a hash of a non-deterministic build proves only that *one* build happened, not *which* one.
+The runtime is built on a **static, `musl` floor** (see [CRUST Runtime](crust-runtime.md)): fewer ambient system libraries drifting in, fewer host-specific paths baked into the output. That **reduces host drift** — the fewer moving parts, the closer two builds land. Where a build is bit-for-bit reproducible, receipts prove it; where it is not yet, the **signed manifest hash still decides** exactly which artifact you are holding. Determinism is the direction we build toward; the hash is what makes "which build" answerable today.
 
 ---
 
@@ -90,9 +90,9 @@ All four are things you run. None phone home. If they pass, you hold exactly the
 Verification proves the *download* is intact. Two more sensors prove the *contents* and the *running state*:
 
 - **System-BOM** — a bill of materials for the whole package: what's inside, which surfaces it exposes, which components at which versions. Your total package is enumerated, not opaque. It is built to the shape of published **AI-SBOM minimum-element** guidance (e.g. Germany's BSI *"SBOM for AI"*) — as **alignment**, not a certification claim; an `ai-sbom` tool ships for it.
-- **RAM-BOM** — proves that what is actually executing in memory corresponds to the sealed image. The disk flank is closed (no executable path outside the sealed carrier) and the memory flank is **honest**: it reports what it is, so "the thing running" and "the thing you verified" are the same thing, not two stories.
+- **RAM-BOM** — attests memory digests for the sealed capsule and the processes **in its sensor scope**, so within that scope "the thing running" corresponds to "the thing you verified." The disk flank is closed (no executable path outside the sealed carrier) and the memory flank is **honest** — it reports what it measured, rather than claiming more than its scope covers.
 
-Together they extend the promise past download-time: not just *you got the right bytes*, but *those bytes, and only those, are what's running*.
+Together they extend the promise past download-time: not just *you got the right bytes*, but — within the sealed capsule's scope — *those are the bytes running*.
 
 ---
 
@@ -105,6 +105,16 @@ Because a security story you can't inspect is just marketing. Every link here �
 *(The runtime implementation source opens publicly on release. The verification chain described here — hashes, signatures, BOMs — is open now: it's what lets you check any artifact we publish.)*
 
 ---
+
+## Try it
+
+Verify any release we publish — recompute its hash and check it against the published `.sha256`, before you trust a single byte:
+
+```sh
+sha256sum -c ainternet-in-a-box-<ver>.tar.zst.sha256   # OK = the bytes we signed, unchanged
+```
+
+Then verify the signature against the published key. Machine surface: [`ainternet.org/resources.json`](https://ainternet.org/resources.json) points at the release artifacts and their verification references.
 
 ## Related
 

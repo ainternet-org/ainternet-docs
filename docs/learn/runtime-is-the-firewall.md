@@ -63,6 +63,25 @@ If your security depends on the model choosing to follow instructions, a clevere
 
 ---
 
+## Try it
+
+See the floor an actor actually gets — its posture, granted surfaces, and what each may reach:
+
+```sh
+box provision status --json      # posture floor + granted surfaces, per actor
+box bind codex                   # external CLI actor → 0x0000:egress-not-permitted under a local-only posture
+```
+
+Raise it deliberately, never by default — sandbox is the default; `--no-sandbox` is a loud, receipted dev escape, not a habit:
+
+```sh
+box provision set-snaft NORMAL   # raise the posture floor
+box grant egress codex.aint      # then open egress for the declared actor (.aint, not .waint)
+box bind codex                   # now the same actor carries
+```
+
+Machine surface: [`ainternet.org/api.json`](https://ainternet.org/api.json) lists the actor / route / grant verbs an AI can call directly.
+
 ## Related
 
 - [Reasoning ≠ Execution](reasoning-not-execution.md) — why the model reasons freely but acts only through a verb.

@@ -58,6 +58,16 @@ That division is the whole offer: a governance layer lands on a **proven L0/L1 f
 
 ---
 
+## Try it
+
+Read the same verdict a governance layer would read — the admissibility decision, computed from local facts:
+
+```sh
+box provision status --json    # carry_decision / blocked_by / posture — the PASS / DEGRADE / HALT verdict
+```
+
+An external gate consumes those fields directly instead of parsing prose. Machine surface: [`ainternet.org/api.json`](https://ainternet.org/api.json) exposes the verdict and grant verbs a layer above can call.
+
 ## Related
 
 - [Reasoning ≠ Execution](reasoning-not-execution.md) — the split a gate plugs into.
