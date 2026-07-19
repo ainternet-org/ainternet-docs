@@ -132,6 +132,24 @@ Sandbox is the floor, always on. The dev escape is **explicit and loud**: `--no-
 
 The local/LAN actor is a *request-envelope* to a model — it asks, it does not get a shell. The external CLI actor is the heaviest: it brings a runtime supply chain and reaches out, so it carries the most and is gated the hardest. Same verb, `box bind`; different facts required to reach `0x4000`.
 
+A real local-model actor session, opened and sealed — note how the runtime **announces exactly what it is** before it does anything:
+
+```text
+$ ./box actor cli qwen.aint
+  opening tcli as qwen.aint — /quit to seal · /models to list · audit -> …/actors/qwen.aint.tcli-state
+qwen.aint · bound actor runtime
+  on behalf of jasper.aint
+  provider/model local/gemma4:26b (locked)
+  runtime request envelope · no shell/fs/egress unless granted
+  /models · /whoami · /trail · /clear · /verify · /seal · /help · /quit
+qwen.aint› /quit
+  ✓ session sealed (qwen.aint) · audit-head no-audit
+```
+
+Everything the actor is allowed to be is stated up front: it acts **on behalf of** a human `.aint`, its model is **locked**, and it is a **request envelope** — no shell, no filesystem, no egress unless granted. `/quit` seals the session to a durable receipt ([Actor Seal](actor-seal.md)); here the session did nothing, so its audit head is honestly `no-audit`.
+
+And this `qwen.aint` local model runs **side by side** with a heavier `codex` external-CLI actor on the *same box* — a locked local model and an egressing CLI, two completely different systems, admitted by the same `box bind` verb and held to the same floor. An online-API actor binds the same way. One box, heterogeneous actors, one enforcement model.
+
 ## Try it
 
 Watch a bind fail closed, then open it deliberately — the whole safety model in four lines:
