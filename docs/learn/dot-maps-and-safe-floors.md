@@ -4,9 +4,14 @@
 > readable. Dot maps are the small visible clues that tell an operator what an
 > actor can see, what it cannot see, and why absence is protection.
 
-When an actor opens inside AInternet-in-a-box, it is not dropped onto the host.
-It receives a small floor: a set of mounted paths, dot folders, key references
-and runtime surfaces that were deliberately granted.
+Everything here starts with **who is acting**. An actor is a bound `.aint`
+identity (via JIS), acting on behalf of a human `.aint` — not an anonymous
+process. That identity is what the floor is built *for*.
+
+When such an actor opens inside AInternet-in-a-box, it is not dropped onto the
+host. It receives a small floor: a set of mounted paths, dot folders, key
+references and runtime surfaces that were deliberately granted **to that
+identity**, and nothing else.
 
 That floor is a language:
 
