@@ -75,6 +75,7 @@ nav:
     - "Machine Posture": operators/machine-posture.md
     - "Auditability": operators/auditability.md
     - "Audit Cockpit": operators/audit-cockpit.md
+    - "IAB Terminal Path": operators/iab-terminal-path.md
     - "Security Behavior": operators/security-behavior.md
     - "Tooling": operators/tooling.md
   - Guides:
